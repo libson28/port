@@ -1,0 +1,711 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head><script src="https://static.readdy.ai/static/e.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Autonome de Dakar - Porte d'Entrée de l'Afrique de l'Ouest</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#1e40af',
+secondary: '#0ea5e9'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+.custom-checkbox {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #1e40af;
+border-color: #1e40af;
+}
+.custom-checkbox:checked::after {
+content: '✓';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 0.75rem;
+font-weight: bold;
+}
+.custom-radio {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-radio:checked {
+border-color: #1e40af;
+}
+.custom-radio:checked::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 0.5rem;
+height: 0.5rem;
+background-color: #1e40af;
+border-radius: 50%;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="w-full bg-white p-2 shadow-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center">
+<div><img style="width: 180px;" src="logo.png" alt=""></div>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#accueil" class="text-gray-900 hover:text-primary transition-colors">Accueil</a>
+<a href="#apropos" class="text-gray-700 hover:text-primary transition-colors">À Propos</a>
+<a href="#actualites" class="text-gray-700 hover:text-primary transition-colors">Actualités</a>
+<a href="#trafics" class="text-gray-700 hover:text-primary transition-colors">Trafics</a>
+<a href="#services" class="text-gray-700 hover:text-primary transition-colors">Services</a>
+<a href="#visites" class="text-gray-700 hover:text-primary transition-colors">Visites</a>
+<a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<button class="bg-secondary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-700 transition-colors">
+Réserver une Visite
+</button>
+<div class="md:hidden">
+<button id="mobile-menu-btn" class="w-8 h-8 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+
+<section id="contact" class="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-white overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23dbeafe" fill-opacity="0.3"%3E%3Cpath d="M40 40c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm-24-24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+<div class="absolute top-20 right-10 w-96 h-96 bg-gradient-to-bl from-primary/8 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tr from-secondary/8 to-transparent rounded-full blur-3xl"></div>
+
+<div class="relative min-h-[60vh] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=Modern%20port%20communication%20center%20with%20professional%20staff%2C%20customer%20service%20operations%2C%20elegant%20maritime%20business%20office%20with%20glass%20walls%2C%20sophisticated%20contact%20center%20with%20ocean%20view%2C%20premium%20client%20reception%20area%20with%20contemporary%20design&width=1920&height=700&seq=contactbanner1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/30"></div>
+<div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl">
+<div class="mb-8 mt-6">
+<span class="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-semibold border border-white/20">
+<i class="ri-customer-service-2-line mr-3 text-lg"></i>
+Centre de Contact Maritime
+</span>
+</div>
+<h1 class="text-7xl font-bold text-white mb-8 leading-tight">
+Contactez<br>
+<span class="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Notre Équipe</span>
+</h1>
+<p class="text-2xl text-blue-100 mb-12 leading-relaxed font-light max-w-3xl">
+Notre équipe d'experts maritimes est à votre disposition 24h/24 pour vous accompagner dans tous vos projets portuaires et logistiques
+</p>
+<div class="flex flex-col sm:flex-row gap-6 mb-8">
+<button class="group bg-white text-primary px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center">
+Nous Contacter
+<i class="ri-arrow-down-line ml-3 group-hover:translate-y-1 transition-transform"></i>
+</span>
+</button>
+<button class="group border-2 border-white text-white px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:bg-white hover:text-primary hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center">
+<i class="ri-phone-line mr-3"></i>
+Appel d'Urgence 24h/24
+</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+
+<div class="relative py-24">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-20">
+<div class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-sm font-semibold mb-8 border border-primary/20">
+<i class="ri-message-3-line mr-3 text-lg"></i>
+Expertise & Accompagnement
+</div>
+<h2 class="text-5xl font-bold text-gray-900 mb-8">Restons en Contact</h2>
+<p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Plusieurs moyens de nous joindre selon vos besoins et votre urgence. Notre service client d'excellence vous garantit une réponse rapide et personnalisée</p>
+</div>
+
+<div class="grid lg:grid-cols-12 gap-12 mb-20">
+<div class="lg:col-span-8">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30">
+<div class="flex items-center mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-primary to-blue-600 rounded-2xl mr-6 shadow-lg">
+<i class="ri-mail-send-line ri-2x text-white"></i>
+</div>
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Envoyez-nous un Message</h3>
+<p class="text-gray-600">Notre équipe vous répondra dans les 2 heures ouvrables</p>
+</div>
+</div>
+
+<form class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Prénom *</label>
+<input type="text" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+<div>
+<label class="block text-sm font-semibol d text-gray-800 mb-3">Nom *</label>
+<input type="text" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+</div>
+
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Email *</label>
+<input type="email" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Téléphone</label>
+<input type="tel" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+</div>
+
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Entreprise</label>
+<input type="text" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Sujet de votre demande *</label>
+<select required class="w-full px-5 py-4 pr-10 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white/70 text-sm">
+<option value="">Sélectionnez un sujet</option>
+<option value="manutention">Services de Manutention</option>
+<option value="entreposage">Entreposage Sécurisé</option>
+<option value="pilotage">Pilotage Maritime</option>
+<option value="douane">Formalités Douanières</option>
+<option value="visite">Réservation Visite</option>
+<option value="partenariat">Opportunités de Partenariat</option>
+<option value="autre">Autre demande</option>
+</select>
+</div>
+
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Niveau d'urgence</label>
+<div class="flex space-x-6">
+<label class="flex items-center">
+<input type="radio" name="urgence" value="faible" class="custom-radio">
+<span class="ml-3 text-sm text-gray-700">Non urgent</span>
+</label>
+<label class="flex items-center">
+<input type="radio" name="urgence" value="moyen" class="custom-radio" checked>
+<span class="ml-3 text-sm text-gray-700">Normal</span>
+</label>
+<label class="flex items-center">
+<input type="radio" name="urgence" value="eleve" class="custom-radio">
+<span class="ml-3 text-sm text-gray-700">Urgent</span>
+</label>
+</div>
+</div>
+
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Message *</label>
+<textarea required rows="6" placeholder="Décrivez votre demande en détail..." class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70 resize-none"></textarea>
+</div>
+
+<div class="flex items-start space-x-3">
+<input type="checkbox" required class="custom-checkbox mt-1">
+<label class="text-sm text-gray-600 leading-relaxed">J'accepte que mes données personnelles soient traitées par le Port Autonome de Dakar dans le cadre de ma demande, conformément à notre politique de confidentialité</label>
+</div>
+
+<div class="flex items-start space-x-3">
+<input type="checkbox" class="custom-checkbox mt-1">
+<label class="text-sm text-gray-600 leading-relaxed">Je souhaite recevoir les newsletters et informations commerciales du Port Autonome de Dakar</label>
+</div>
+
+<button type="submit" class="w-full bg-gradient-to-r from-primary to-blue-600 text-white py-5 px-8 !rounded-button whitespace-nowrap text-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center justify-center">
+Envoyer le Message
+<i class="ri-send-plane-line ml-3"></i>
+</span>
+</button>
+</form>
+
+<div class="mt-8 p-6 bg-green-50/70 rounded-2xl border border-green-200/50">
+<div class="flex items-center text-sm text-green-700">
+<i class="ri-shield-check-line mr-3 text-lg"></i>
+<span>Vos données sont sécurisées et traitées conformément au RGPD. Réponse garantie sous 2h ouvrables.</span>
+</div>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-4 space-y-8">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30">
+<div class="text-center mb-8">
+<div class="w-16 h-16 bg-gradient-to-br from-primary to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i class="ri-phone-line ri-2x text-white"></i>
+</div>
+<h4 class="text-2xl font-bold text-gray-900 mb-2">Contacts Directs</h4>
+<p class="text-gray-600">Joignez-nous par téléphone</p>
+</div>
+
+<div class="space-y-6">
+<div class="group p-6 bg-gradient-to-r from-primary/5 to-blue-50/50 rounded-2xl border border-primary/10 hover:shadow-lg transition-all duration-300">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center group-hover:bg-primary/20 transition-colors">
+<i class="ri-customer-service-2-line text-primary text-xl"></i>
+</div>
+<div>
+<div class="font-bold text-gray-900">Service Client</div>
+<div class="text-primary font-semibold text-lg">+221 33 823 92 00</div>
+<div class="text-sm text-gray-600">Lun-Ven 7h-19h, Sam 8h-16h</div>
+</div>
+</div>
+</div>
+
+<div class="group p-6 bg-gradient-to-r from-red-50/50 to-orange-50/50 rounded-2xl border border-red-100/50 hover:shadow-lg transition-all duration-300">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center group-hover:bg-red-200 transition-colors">
+<i class="ri-alarm-warning-line text-red-600 text-xl"></i>
+</div>
+<div>
+<div class="font-bold text-gray-900">Urgences 24h/24</div>
+<div class="text-red-600 font-semibold text-lg">+221 33 823 92 99</div>
+<div class="text-sm text-gray-600">Intervention d'urgence</div>
+</div>
+</div>
+</div>
+
+<div class="group p-6 bg-gradient-to-r from-green-50/50 to-emerald-50/50 rounded-2xl border border-green-100/50 hover:shadow-lg transition-all duration-300">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center group-hover:bg-green-200 transition-colors">
+<i class="ri-ship-line text-green-600 text-xl"></i>
+</div>
+<div>
+<div class="font-bold text-gray-900">Opérations Portuaires</div>
+<div class="text-green-600 font-semibold text-lg">+221 33 823 92 50</div>
+<div class="text-sm text-gray-600">Coordination navires</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="mt-8 p-6 bg-gradient-to-r from-yellow-50/70 to-orange-50/70 rounded-2xl border border-yellow-200/50">
+<div class="text-center">
+<div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mx-auto mb-4">
+<i class="ri-time-line text-yellow-600 text-xl"></i>
+</div>
+<div class="font-bold text-gray-900 mb-2">Temps de Réponse</div>
+<div class="grid grid-cols-2 gap-4 text-sm">
+<div class="text-center">
+<div class="font-bold text-green-600">< 2h</div>
+<div class="text-gray-600">Email</div>
+</div>
+<div class="text-center">
+<div class="font-bold text-blue-600">< 3 min</div>
+<div class="text-gray-600">Téléphone</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="bg-gradient-to-br from-secondary/5 to-cyan-50/50 rounded-3xl p-8 border border-secondary/10">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-gradient-to-br from-secondary to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i class="ri-map-pin-line ri-2x text-white"></i>
+</div>
+<h4 class="text-2xl font-bold text-gray-900 mb-2">Nous Rendre Visite</h4>
+<p class="text-gray-600">Nos bureaux et installations</p>
+</div>
+
+<div class="space-y-4 mb-6">
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center mt-1">
+<i class="ri-map-pin-2-line text-secondary text-sm"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900">Siège Social</div>
+<div class="text-gray-600 text-sm">Boulevard de la République<br>BP 3257 Dakar, Sénégal</div>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center mt-1">
+<i class="ri-building-line text-secondary text-sm"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900">Terminal Conteneurs</div>
+<div class="text-gray-600 text-sm">Môle 8, Zone Portuaire<br>Accès par Avenue Blaise Diagne</div>
+</div>
+</div>
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center mt-1">
+<i class="ri-time-line text-secondary text-sm"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900">Horaires d'ouverture</div>
+<div class="text-gray-600 text-sm">Lun-Ven: 7h30-18h<br>Sam: 8h00-16h00</div>
+</div>
+</div>
+</div>
+
+<div class="bg-white/60 rounded-2xl p-4">
+<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRLebaNKf02N7GsBwOcUTR8bZox5Tev_yYVe_B6g5EHexF7IOTFRZIm_uO-kIZo4TMIm0c&usqp=CAU" alt="Entrée du port" class="w-full h-32 object-cover object-top rounded-xl">
+</div>
+
+<button class="w-full mt-4 bg-gradient-to-r from-secondary to-cyan-600 text-white py-4 !rounded-button font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center justify-center">
+Voir sur Google Maps
+<i class="ri-external-link-line ml-3"></i>
+</span>
+</button>
+</div>
+
+
+</div>
+</div>
+
+<div class="bg-gradient-to-r from-slate-100/50 via-blue-50/30 to-slate-100/50 rounded-3xl p-12 border border-slate-200/50">
+<div class="text-center mb-12">
+<h3 class="text-4xl font-bold text-gray-900 mb-6">Questions Fréquentes</h3>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">Trouvez rapidement les réponses aux questions les plus courantes</p>
+</div>
+
+<div class="grid lg:grid-cols-2 gap-8">
+<div class="space-y-6">
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-primary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Quels sont vos horaires d'opération ?</h5>
+<p class="text-gray-600 text-sm">Nos terminaux fonctionnent 24h/24 et 7j/7. Les bureaux administratifs sont ouverts du lundi au vendredi de 7h30 à 18h et le samedi de 8h à 16h.</p>
+</div>
+</div>
+</div>
+
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-primary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Comment réserver une visite du port ?</h5>
+<p class="text-gray-600 text-sm">Vous pouvez réserver une visite guidée via notre formulaire en ligne, par téléphone au +221 33 823 92 00 ou par email. Les visites sont gratuites et durent environ 2 heures.</p>
+</div>
+</div>
+</div>
+
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-primary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Quels documents pour l'importation ?</h5>
+<p class="text-gray-600 text-sm">Les documents requis incluent : connaissement, facture commerciale, liste de colisage, certificat d'origine et déclaration en douane. Notre équipe peut vous assister dans ces démarches.</p>
+</div>
+</div>
+</div>
+
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-primary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Délais de dédouanement ?</h5>
+<p class="text-gray-600 text-sm">Le délai moyen de dédouanement est de 2,5 heures pour les marchandises standards. Pour les cargaisons spéciales ou contrôlées, comptez 24 à 48 heures maximum.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="space-y-6">
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-secondary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Capacités de stockage disponibles ?</h5>
+<p class="text-gray-600 text-sm">Nous disposons de 150 000 m² d'espaces de stockage, incluant des entrepôts climatisés, des zones pour marchandises dangereuses et des aires de stockage extérieur sécurisées.</p>
+</div>
+</div>
+</div>
+
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-secondary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Tarifs de manutention ?</h5>
+<p class="text-gray-600 text-sm">Nos tarifs varient selon le type de marchandise et les services requis. Contactez notre équipe commerciale pour un devis personnalisé adapté à vos besoins spécifiques.</p>
+</div>
+</div>
+</div>
+
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-secondary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Services d'urgence disponibles ?</h5>
+<p class="text-gray-600 text-sm">Oui, nous proposons des services d'urgence 24h/24 incluant pilotage, remorquage, manutention express et assistance technique. Appelez le +221 33 823 92 99.</p>
+</div>
+</div>
+</div>
+
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300">
+<div class="flex items-start space-x-4">
+<div class="w-8 h-8 bg-secondary/10 rounded-full flex items-center justify-center mt-1">
+<i class="ri-question-line text-secondary text-sm"></i>
+</div>
+<div>
+<h5 class="font-bold text-gray-900 mb-2">Connexions multimodales ?</h5>
+<p class="text-gray-600 text-sm">Le port est connecté au réseau ferroviaire national et dispose d'excellentes liaisons routières. Nous facilitons les transferts vers l'intérieur du pays et les pays voisins.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="text-center mt-12">
+<button class="bg-gradient-to-r from-primary to-blue-600 text-white px-10 py-4 !rounded-button font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center">
+Plus de Questions-Réponses
+<i class="ri-arrow-right-line ml-3"></i>
+</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23475569" fill-opacity="0.1"%3E%3Cpath d="M40 40c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm-24-24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl"></div>
+
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-20">
+<div class="grid lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-5">
+<div class="flex items-center mb-8">
+<div class="font-['Pacifico'] text-3xl text-white font-bold"><img src="logo.png" style="width: 200px; background-color: white; padding: 5px; border-radius: 5px;" alt=""></div>
+</div>
+<p class="text-gray-300 text-lg leading-relaxed mb-8">
+Porte d'entrée maritime de l'Afrique de l'Ouest depuis 1865, nous connectons les continents avec excellence, innovation et durabilité pour un avenir maritime prospère.
+</p>
+<div class="flex space-x-6">
+<div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-facebook-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-500 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-twitter-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-linkedin-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-youtube-fill text-white text-2xl"></i>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-7 grid md:grid-cols-3 gap-8">
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Navigation</h4>
+<div class="space-y-4">
+<a href="#accueil" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Accueil</a>
+<a href="#apropos" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">À Propos</a>
+<a href="#services" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Services</a>
+<a href="#trafics" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Trafics</a>
+<a href="#actualites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Actualités</a>
+<a href="#visites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Visites</a>
+<a href="#contact" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Services</h4>
+<div class="space-y-4">
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Manutention Portuaire</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Entreposage Sécurisé</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Pilotage Maritime</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Formalités Douanières</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Avitaillement</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Support Premium</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Contact</h4>
+<div class="space-y-4">
+<div class="flex items-start space-x-3">
+<i class="ri-map-pin-line text-primary text-lg mt-1"></i>
+<div class="text-gray-300 text-sm">
+Boulevard de la République<br>
+BP 3257 Dakar, Sénégal
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-phone-line text-primary text-lg"></i>
+<div class="text-gray-300">+221 33 823 92 00</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-mail-line text-primary text-lg"></i>
+<div class="text-gray-300">info@portdakar.sn</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-time-line text-primary text-lg"></i>
+<div class="text-gray-300 text-sm">24h/24 - 7j/7</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="border-t border-gray-700 pt-8">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="flex flex-wrap items-center space-x-6">
+<div class="text-gray-400 text-sm">Certifié ISO 9001:2015</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">ISPS Code Compliant</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">Green Port Certified</div>
+</div>
+<div class="flex flex-wrap items-center justify-end space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Mentions Légales</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Politique de Confidentialité</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Cookies</a>
+</div>
+</div>
+<div class="text-center mt-8 pt-8 border-t border-gray-700">
+<p class="text-gray-400 text-sm">
+© 2025 Port Autonome de Dakar. Tous droits réservés. | Développé avec ❤️ pour l'excellence maritime africaine.
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+
+<script>
+// Mobile menu toggle
+document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+const nav = document.querySelector('nav');
+nav.classList.toggle('hidden');
+});
+
+// Initialize charts
+document.addEventListener('DOMContentLoaded', function() {
+// Traffic Chart
+const trafficChart = echarts.init(document.getElementById('trafficChart'));
+const trafficOption = {
+tooltip: { trigger: 'axis' },
+legend: { data: ['Conteneurs (EVP)', 'Vrac (Tonnes)', 'Roulier (Unités)'] },
+grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+xAxis: { type: 'category', data: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'] },
+yAxis: { type: 'value' },
+series: [
+{ name: 'Conteneurs (EVP)', type: 'line', data: [8200, 8900, 9400, 9800, 10200, 11000, 11500, 12000, 12200, 12800, 13000, 13400], smooth: true, lineStyle: { color: '#3b82f6' }, itemStyle: { color: '#3b82f6' } },
+{ name: 'Vrac (Tonnes)', type: 'line', data: [45000, 48000, 52000, 50000, 54000, 58000, 60000, 62000, 59000, 61000, 63000, 65000], smooth: true, lineStyle: { color: '#10b981' }, itemStyle: { color: '#10b981' } },
+{ name: 'Roulier (Unités)', type: 'line', data: [1200, 1350, 1400, 1450, 1500, 1600, 1650, 1700, 1750, 1800, 1850, 1900], smooth: true, lineStyle: { color: '#f59e0b' }, itemStyle: { color: '#f59e0b' } }
+]
+};
+trafficChart.setOption(trafficOption);
+
+// Cargo Chart
+const cargoChart = echarts.init(document.getElementById('cargoChart'));
+const cargoOption = {
+tooltip: { trigger: 'item', formatter: '{a} <br/>{b}: {c} ({d}%)' },
+series: [{
+name: 'Types de marchandises',
+type: 'pie',
+radius: '70%',
+data: [
+{ value: 35, name: 'Conteneurs', itemStyle: { color: '#3b82f6' } },
+{ value: 25, name: 'Vrac solide', itemStyle: { color: '#10b981' } },
+{ value: 20, name: 'Hydrocarbures', itemStyle: { color: '#f59e0b' } },
+{ value: 12, name: 'Roulier', itemStyle: { color: '#8b5cf6' } },
+{ value: 8, name: 'Autres', itemStyle: { color: '#ef4444' } }
+],
+emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.2)' } }
+}]
+};
+cargoChart.setOption(cargoOption);
+
+// Comparison Chart
+const comparisonChart = echarts.init(document.getElementById('comparisonChart'));
+const comparisonOption = {
+tooltip: { trigger: 'axis' },
+legend: { data: ['2023', '2024'] },
+grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+xAxis: { type: 'category', data: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'] },
+yAxis: { type: 'value' },
+series: [
+{ name: '2023', type: 'bar', data: [7800, 8200, 8600, 8900, 9200, 9800, 10200, 10500, 10800, 11000, 11200, 11500], itemStyle: { color: '#94a3b8' } },
+{ name: '2024', type: 'bar', data: [8200, 8900, 9400, 9800, 10200, 11000, 11500, 12000, 12200, 12800, 13000, 13400], itemStyle: { color: '#3b82f6' } }
+]
+};
+comparisonChart.setOption(comparisonOption);
+
+// Resize charts on window resize
+window.addEventListener('resize', function() {
+trafficChart.resize();
+cargoChart.resize();
+comparisonChart.resize();
+});
+});
+
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+});
+});
+</script>
+
+<script src="https://static.readdy.ai/static/share.js"></script></body>
+</html>

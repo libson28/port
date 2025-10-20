@@ -1,0 +1,891 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head><script src="https://static.readdy.ai/static/e.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Autonome de Dakar - Porte d'Entrée de l'Afrique de l'Ouest</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#1e40af',
+secondary: '#0ea5e9'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+.custom-checkbox {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #1e40af;
+border-color: #1e40af;
+}
+.custom-checkbox:checked::after {
+content: '✓';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 0.75rem;
+font-weight: bold;
+}
+.custom-radio {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-radio:checked {
+border-color: #1e40af;
+}
+.custom-radio:checked::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 0.5rem;
+height: 0.5rem;
+background-color: #1e40af;
+border-radius: 50%;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="w-full bg-white p-2 shadow-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center">
+<div><img style="width: 180px;" src="logo.png" alt=""></div>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#accueil" class="text-gray-900 hover:text-primary transition-colors">Accueil</a>
+<a href="#apropos" class="text-gray-700 hover:text-primary transition-colors">À Propos</a>
+<a href="#actualites" class="text-gray-700 hover:text-primary transition-colors">Actualités</a>
+<a href="#trafics" class="text-gray-700 hover:text-primary transition-colors">Trafics</a>
+<a href="#services" class="text-gray-700 hover:text-primary transition-colors">Services</a>
+<a href="#visites" class="text-gray-700 hover:text-primary transition-colors">Visites</a>
+<a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<button class="bg-secondary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-700 transition-colors">
+Réserver une Visite
+</button>
+<div class="md:hidden">
+<button id="mobile-menu-btn" class="w-8 h-8 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+<section id="accueil" class="relative min-h-screen flex items-center overflow-hidden" style="background-image: url('https://readdy.ai/api/search-image?query=Stunning%20panoramic%20view%20of%20modern%20Dakar%20port%20with%20elegant%20cargo%20ships%2C%20sleek%20containers%2C%20sophisticated%20cranes%20and%20advanced%20harbor%20infrastructure%2C%20aerial%20perspective%20of%20premium%20maritime%20terminal%20with%20crystal%20blue%20ocean%2C%20professional%20architectural%20photography%2C%20soft%20white%20gradient%20background%20on%20left%20side%20perfectly%20blending%20with%20image%2C%20luxury%20commercial%20port%20operations%2C%20golden%20hour%20lighting&width=1920&height=1080&seq=hero2&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-white via-white/85 to-white/30"></div>
+<div class="absolute inset-0 bg-gradient-to-b from-transparent via-transparent to-black/5"></div>
+<div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-3xl">
+<div class="mb-6">
+<span class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">
+<i class="ri-ship-line mr-2"></i>
+Hub Maritime d'Excellence
+</span>
+</div>
+<h1 class="text-6xl font-bold text-gray-900 mb-8 leading-tight">
+A propos
+<span class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">du Port</span>
+</h1>
+<p class="text-2xl text-gray-600 mb-10 leading-relaxed font-light">
+Porte d'entrée stratégique de l'Afrique de l'Ouest, nous connectons les continents avec des infrastructures de classe mondiale et une expertise portuaire inégalée.
+</p>
+<div class="flex flex-col sm:flex-row gap-6 mb-12">
+<button class="group bg-gradient-to-r from-primary to-blue-600 text-white px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300">
+<span class="flex items-center">
+Découvrir le Port
+<i class="ri-arrow-right-line ml-3 group-hover:translate-x-1 transition-transform"></i>
+</span>
+</button>
+<button class="group border-2 border-primary text-primary px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:bg-primary hover:text-white hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+<span class="flex items-center">
+<i class="ri-vr-box-line mr-3"></i>
+Visite Virtuelle 360°
+</span>
+</button>
+</div>
+<div class="grid grid-cols-3 gap-8">
+<div class="text-center">
+<div class="text-4xl font-bold text-primary mb-2">160+</div>
+<div class="text-gray-600 text-sm uppercase tracking-wider">Années d'Histoire</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-bold text-primary mb-2">15M</div>
+<div class="text-gray-600 text-sm uppercase tracking-wider">Tonnes Annuelles</div>
+</div>
+<div class="text-center">
+<div class="text-4xl font-bold text-primary mb-2">25km</div>
+<div class="text-gray-600 text-sm uppercase tracking-wider">de Quais</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- <section id="visites" class="py-20 bg-gradient-to-br from-blue-50 via-white to-sky-50 relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="60" height="60" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23e0f2fe" fill-opacity="0.3"%3E%3Ccircle cx="30" cy="30" r="2"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+<i class="ri-map-pin-line mr-2"></i>
+Expérience Immersive
+</div>
+<h2 class="text-5xl font-bold text-gray-900 mb-6">Découvrez Notre Port</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Plongez au cœur des opérations portuaires les plus avancées d'Afrique de l'Ouest à travers nos visites exclusives</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+<div class="flex items-center mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-primary to-blue-600 rounded-2xl mr-6 shadow-lg">
+<i class="ri-calendar-check-line ri-2x text-white"></i>
+</div>
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Visite Guidée</h3>
+<p class="text-gray-600">Expérience immersive avec nos experts</p>
+</div>
+</div>
+<form class="space-y-6">
+<div class="grid md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Date de visite</label>
+<input type="date" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/50">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Heure préférée</label>
+<select class="w-full px-5 py-4 pr-10 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white/50 text-sm">
+<option>09:00 - Matinée</option>
+<option>11:00 - Fin de matinée</option>
+<option>14:00 - Après-midi</option>
+<option>16:00 - Fin d'après-midi</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Nombre de participants</label>
+<input type="number" min="1" max="20" value="1" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/50">
+</div>
+<button type="submit" class="w-full bg-gradient-to-r from-primary to-blue-600 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
+<span class="flex items-center justify-center">
+Réserver Maintenant
+<i class="ri-calendar-event-line ml-3"></i>
+</span>
+</button>
+</form>
+<div class="mt-6 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+<div class="flex items-center text-sm text-blue-700">
+<i class="ri-information-line mr-2"></i>
+<span>Visite gratuite • Durée 2h • Guide expert inclus</span>
+</div>
+</div>
+</div>
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+<div class="flex items-center mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-secondary to-cyan-500 rounded-2xl mr-6 shadow-lg">
+<i class="ri-vr-box-line ri-2x text-white"></i>
+</div>
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Visite Virtuelle</h3>
+<p class="text-gray-600">Exploration 360° depuis chez vous</p>
+</div>
+</div>
+<div class="relative mb-8 group cursor-pointer">
+<div class="bg-gradient-to-br from-secondary/20 via-primary/10 to-cyan-100/30 rounded-2xl p-8 h-48 flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Virtual%20reality%20360%20degree%20port%20tour%20preview%2C%20immersive%20digital%20experience%20interface%2C%20modern%20VR%20technology%20visualization%2C%20interactive%20port%20exploration%20preview%2C%20futuristic%20digital%20maritime%20tour%2C%20clean%20technology%20interface%20design%2C%20professional%20VR%20experience&width=400&height=200&seq=vr1&orientation=landscape" alt="Aperçu VR" class="w-full h-full object-cover object-top rounded-xl opacity-80 group-hover:opacity-100 transition-opacity">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-20 h-20 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-2xl group-hover:scale-105 transition-transform">
+<i class="ri-play-fill ri-2x text-secondary"></i>
+</div>
+</div>
+</div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700">
+360° VR
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-secondary to-cyan-500 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg mb-6">
+<span class="flex items-center justify-center">
+Démarrer l'Expérience VR
+<i class="ri-external-link-line ml-3"></i>
+</span>
+</button>
+<div class="grid grid-cols-2 gap-4 text-center">
+<div class="p-4 bg-gray-50/50 rounded-xl">
+<div class="text-2xl font-bold text-secondary mb-1">15-20</div>
+<div class="text-xs text-gray-600 uppercase tracking-wider">Minutes</div>
+</div>
+<div class="p-4 bg-gray-50/50 rounded-xl">
+<div class="text-2xl font-bold text-secondary mb-1">24/7</div>
+<div class="text-xs text-gray-600 uppercase tracking-wider">Disponible</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section> -->
+<!-- <section id="trafics" class="py-20 bg-gradient-to-b from-white to-gray-50 relative">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866-3.866 10.134-3.866 14 0s3.866 10.134 0 14-10.134 3.866-14 0-3.866-10.134 0-14z" fill="%23f1f5f9" fill-opacity="0.4"/%3E%3C/svg%3E')] opacity-30"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+<div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+Données en Temps Réel
+</div>
+<h2 class="text-5xl font-bold text-gray-900 mb-6">Activité Portuaire</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Suivez en direct les performances et statistiques de notre port grâce à notre système de monitoring avancé</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-blue-100/50 hover:border-blue-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-ship-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-blue-600 mb-3 font-mono">47</div>
+<div class="text-gray-700 font-medium mb-2">Navires en Escale</div>
+<div class="text-sm text-gray-500">+3 depuis hier</div>
+</div>
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-green-100/50 hover:border-green-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-box-3-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-green-600 mb-3 font-mono">12,458</div>
+<div class="text-gray-700 font-medium mb-2">Conteneurs Traités</div>
+<div class="text-sm text-gray-500">+156 aujourd'hui</div>
+</div>
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-orange-100/50 hover:border-orange-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-scales-3-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-orange-600 mb-3 font-mono">2.4M</div>
+<div class="text-gray-700 font-medium mb-2">Tonnes Mensuelles</div>
+<div class="text-sm text-gray-500">78% de l'objectif</div>
+</div>
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-100/50 hover:border-purple-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-dashboard-3-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-purple-600 mb-3 font-mono">89%</div>
+<div class="text-gray-700 font-medium mb-2">Taux d'Occupation</div>
+<div class="text-sm text-gray-500">Capacité optimale</div>
+</div>
+</div>
+<div class="grid lg:grid-cols-2 gap-10">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-gray-900">Évolution du Trafic</h3>
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+<span class="text-sm text-gray-600">Tonnes traitées</span>
+</div>
+</div>
+<div id="trafficChart" class="h-80"></div>
+</div>
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-gray-900">Types de Marchandises</h3>
+<div class="text-sm text-gray-600">Répartition mensuelle</div>
+</div>
+<div id="cargoChart" class="h-80"></div>
+</div>
+</div>
+</div>
+</section> -->
+<section id="apropos" class="py-24 bg-gradient-to-br from-blue-50/50 via-white to-sky-50/30 relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23dbeafe" fill-opacity="0.4"%3E%3Cpath d="M40 40c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm-20-20c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4zm40 0c0-2.2 1.8-4 4-4s4 1.8 4 4-1.8 4-4 4-4-1.8-4-4z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-60"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-20">
+<div class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-sm font-semibold mb-8 border border-primary/20">
+<i class="ri-anchor-line mr-3 text-lg"></i>
+Notre Héritage Maritime
+</div>
+<h2 class="text-6xl font-bold text-gray-900 mb-8 leading-tight">
+Une Histoire<br>
+<span class="bg-gradient-to-r from-primary via-blue-600 to-secondary bg-clip-text text-transparent">d'Excellence</span>
+</h2>
+<p class="text-2xl text-gray-600 max-w-4xl mx-auto leading-relaxed font-light">
+Depuis plus d'un siècle, nous incarnons l'excellence portuaire africaine, alliant tradition maritime et innovation technologique pour créer un hub d'exception mondiale
+</p>
+</div>
+<div class="grid lg:grid-cols-12 gap-16 items-start mb-20">
+<div class="lg:col-span-7 space-y-10">
+<div class="bg-white/70 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+<div class="flex items-start space-x-6 mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-primary to-blue-700 rounded-2xl shadow-xl">
+<i class="ri-ship-2-line ri-2x text-white"></i>
+</div>
+<div class="flex-1">
+<h3 class="text-3xl font-bold text-gray-900 mb-4">Histoire & Héritage</h3>
+<div class="w-24 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mb-6"></div>
+</div>
+</div>
+<div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+<p>
+Fondé en <strong class="text-primary font-bold">1865</strong>, le Port Autonome de Dakar s'impose comme le joyau maritime de l'Afrique de l'Ouest. Notre position géographique exceptionnelle à la pointe du continent africain nous confère un avantage stratégique inégalé pour les échanges intercontinentaux.
+</p>
+<p>
+Au fil des décennies, nous avons su marier l'héritage d'un savoir-faire ancestral avec les technologies les plus avancées, créant ainsi un écosystème portuaire d'excellence qui rayonne sur toute la région ouest-africaine.
+</p>
+</div>
+<div class="bg-gradient-to-r from-primary/5 to-secondary/5 rounded-2xl p-6 border border-primary/10">
+<div class="flex items-center space-x-4">
+<div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-xl">
+<i class="ri-trophy-line text-primary text-xl"></i>
+</div>
+<div>
+<div class="font-bold text-gray-900 text-lg">Premier Port d'Afrique de l'Ouest</div>
+<div class="text-gray-600">Par volume de trafic et modernité des infrastructures</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white/70 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+<div class="flex items-start space-x-6 mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-secondary to-cyan-600 rounded-2xl shadow-xl">
+<i class="ri-lightbulb-line ri-2x text-white"></i>
+</div>
+<div class="flex-1">
+<h3 class="text-3xl font-bold text-gray-900 mb-4">Vision & Mission</h3>
+<div class="w-24 h-1 bg-gradient-to-r from-secondary to-cyan-500 rounded-full mb-6"></div>
+</div>
+</div>
+<div class="space-y-6 text-lg text-gray-700 leading-relaxed">
+<p>
+Notre mission transcende le simple transit de marchandises. Nous sommes les architectes d'un avenir où l'Afrique de l'Ouest s'affirme comme un acteur majeur du commerce mondial, grâce à des infrastructures de classe internationale et une expertise reconnue.
+</p>
+<p>
+Chaque jour, nos équipes œuvrent pour maintenir notre statut de gateway continental, facilitant les échanges qui dynamisent l'économie régionale et continentale.
+</p>
+</div>
+</div>
+</div>
+<div class="lg:col-span-5 space-y-8">
+<div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30">
+<div class="text-center mb-8">
+<h4 class="text-2xl font-bold text-gray-900 mb-4">Nos Chiffres Clés</h4>
+<div class="w-16 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto"></div>
+</div>
+<div class="grid grid-cols-2 gap-6">
+<div class="group text-center p-6 bg-gradient-to-br from-primary/5 to-primary/10 rounded-2xl border border-primary/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="text-4xl font-bold text-primary mb-3 font-mono group-hover:scale-110 transition-transform">160+</div>
+<div class="text-sm text-gray-700 font-semibold uppercase tracking-wider">Années d'Histoire</div>
+</div>
+<div class="group text-center p-6 bg-gradient-to-br from-secondary/5 to-secondary/10 rounded-2xl border border-secondary/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="text-4xl font-bold text-secondary mb-3 font-mono group-hover:scale-110 transition-transform">25km</div>
+<div class="text-sm text-gray-700 font-semibold uppercase tracking-wider">de Quais Modernes</div>
+</div>
+<div class="group text-center p-6 bg-gradient-to-br from-green-500/5 to-green-500/10 rounded-2xl border border-green-500/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="text-4xl font-bold text-green-600 mb-3 font-mono group-hover:scale-110 transition-transform">1,200</div>
+<div class="text-sm text-gray-700 font-semibold uppercase tracking-wider">Experts Maritime</div>
+</div>
+<div class="group text-center p-6 bg-gradient-to-br from-orange-500/5 to-orange-500/10 rounded-2xl border border-orange-500/10 hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+<div class="text-4xl font-bold text-orange-600 mb-3 font-mono group-hover:scale-110 transition-transform">15M</div>
+<div class="text-sm text-gray-700 font-semibold uppercase tracking-wider">Tonnes Annuelles</div>
+</div>
+</div>
+</div>
+<div class="bg-white/70 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30">
+<div class="text-center mb-6">
+<h4 class="text-xl font-bold text-gray-900 mb-2">Certifications & Awards</h4>
+<div class="w-12 h-1 bg-gradient-to-r from-yellow-400 to-orange-500 rounded-full mx-auto"></div>
+</div>
+<div class="grid grid-cols-3 gap-4">
+<div class="text-center p-4 bg-yellow-50 rounded-xl border border-yellow-200">
+<div class="w-12 h-12 flex items-center justify-center bg-yellow-100 rounded-xl mx-auto mb-2">
+<i class="ri-award-line text-yellow-600 text-xl"></i>
+</div>
+<div class="text-xs font-semibold text-yellow-800">ISO 9001</div>
+</div>
+<div class="text-center p-4 bg-green-50 rounded-xl border border-green-200">
+<div class="w-12 h-12 flex items-center justify-center bg-green-100 rounded-xl mx-auto mb-2">
+<i class="ri-shield-check-line text-green-600 text-xl"></i>
+</div>
+<div class="text-xs font-semibold text-green-800">ISPS Code</div>
+</div>
+<div class="text-center p-4 bg-blue-50 rounded-xl border border-blue-200">
+<div class="w-12 h-12 flex items-center justify-center bg-blue-100 rounded-xl mx-auto mb-2">
+<i class="ri-leaf-line text-blue-600 text-xl"></i>
+</div>
+<div class="text-xs font-semibold text-blue-800">Green Port</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="grid lg:grid-cols-2 gap-12">
+<div style="height: 500px;" class="bg-white/70 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500">
+<div class="flex items-center mb-8 ">
+<div class="relative">
+<img src="https://readdy.ai/api/search-image?query=Distinguished%20African%20port%20executive%20director%20in%20elegant%20navy%20business%20suit%2C%20confident%20professional%20portrait%20with%20modern%20maritime%20office%20background%2C%20executive%20leadership%20photography%20with%20premium%20port%20facilities%20view%2C%20inspiring%20business%20leader%20portrait%20with%20ocean%20view&width=100&height=100&seq=director3&orientation=squarish" alt="Directeur Général" class="w-24 h-24 rounded-3xl object-cover shadow-xl border-4 border-white">
+<div class="absolute -bottom-3 -right-3 w-10 h-10 bg-gradient-to-br from-primary to-blue-700 rounded-2xl flex items-center justify-center shadow-lg">
+<i class="ri-vip-crown-line text-white text-lg"></i>
+</div>
+</div>
+<div class="ml-8">
+<h3 class="text-3xl font-bold text-gray-900 mb-2">M. Waly Diouf BODIANG</h3>
+<p class="text-primary font-semibold text-lg mb-2">Directeur Général</p>
+<div class="flex items-center text-sm text-gray-600">
+<i class="ri-graduation-cap-line mr-2"></i>
+<span>Master Maritime Business • 15 ans d'expérience</span>
+</div>
+</div>
+</div>
+<blockquote class="text-gray-700 italic text-xl leading-relaxed border-l-4 border-primary pl-8 mb-6">
+"Notre vision est de transformer le Port de Dakar en gateway continental d'excellence, où l'innovation technologique rencontre l'excellence opérationnelle pour redéfinir les standards maritimes africains et propulser notre continent vers de nouveaux sommets."
+</blockquote>
+<div class="flex items-center space-x-4">
+<div class="flex space-x-2">
+<div class="w-3 h-3 bg-primary rounded-full"></div>
+<div class="w-3 h-3 bg-primary/60 rounded-full"></div>
+<div class="w-3 h-3 bg-primary/30 rounded-full"></div>
+</div>
+<span class="text-sm text-gray-600">Leadership visionnaire</span>
+</div>
+</div>
+<div class="bg-gradient-to-br from-primary/5 via-white to-secondary/5 rounded-3xl p-10 border-2 border-gradient-to-r border-primary/20">
+<div class="text-center mb-8">
+<h4 class="text-3xl font-bold text-gray-900 mb-4">Nos Domaines d'Excellence</h4>
+<div class="w-20 h-1 bg-gradient-to-r from-primary to-secondary rounded-full mx-auto"></div>
+</div>
+<div class="grid grid-cols-1 gap-6">
+<div class="group flex items-center space-x-6 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-1">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary to-blue-700 rounded-2xl shadow-lg group-hover:scale-105 transition-transform">
+<i class="ri-ship-2-line text-white text-2xl"></i>
+</div>
+<div class="flex-1">
+<div class="font-bold text-gray-900 text-lg mb-1">Manutention Portuaire</div>
+<div class="text-gray-600">Équipements ultramodernes et expertise technique</div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-primary/10 rounded-full group-hover:bg-primary/20 transition-colors">
+<i class="ri-arrow-right-line text-primary"></i>
+</div>
+</div>
+<div class="group flex items-center space-x-6 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-1">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-secondary to-cyan-600 rounded-2xl shadow-lg group-hover:scale-105 transition-transform">
+<i class="ri-building-4-line text-white text-2xl"></i>
+</div>
+<div class="flex-1">
+<div class="font-bold text-gray-900 text-lg mb-1">Entreposage Sécurisé</div>
+<div class="text-gray-600">Zones de stockage climatisées et surveillance 24h/24</div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-secondary/10 rounded-full group-hover:bg-secondary/20 transition-colors">
+<i class="ri-arrow-right-line text-secondary"></i>
+</div>
+</div>
+<div class="group flex items-center space-x-6 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-1">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-700 rounded-2xl shadow-lg group-hover:scale-105 transition-transform">
+<i class="ri-compass-3-line text-white text-2xl"></i>
+</div>
+<div class="flex-1">
+<div class="font-bold text-gray-900 text-lg mb-1">Services Maritimes</div>
+<div class="text-gray-600">Pilotage, remorquage et assistance navigatoire</div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-green-500/10 rounded-full group-hover:bg-green-500/20 transition-colors">
+<i class="ri-arrow-right-line text-green-600"></i>
+</div>
+</div>
+<div class="group flex items-center space-x-6 p-6 bg-white/60 backdrop-blur-sm rounded-2xl border border-white/40 hover:shadow-xl hover:bg-white/80 transition-all duration-300 transform hover:-translate-y-1">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-700 rounded-2xl shadow-lg group-hover:scale-105 transition-transform">
+<i class="ri-customer-service-2-line text-white text-2xl"></i>
+</div>
+<div class="flex-1">
+<div class="font-bold text-gray-900 text-lg mb-1">Support Client Premium</div>
+<div class="text-gray-600">Accompagnement personnalisé et service d'excellence</div>
+</div>
+<div class="w-8 h-8 flex items-center justify-center bg-orange-500/10 rounded-full group-hover:bg-orange-500/20 transition-colors">
+<i class="ri-arrow-right-line text-orange-600"></i>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="actualites" class="py-16 bg-white">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Actualités et Événements</h2>
+<p class="text-xl text-gray-600">Restez informé de nos dernières nouvelles</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8 mb-12">
+<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=Modern%20port%20expansion%20construction%20with%20new%20cranes%20and%20terminal%20facilities%2C%20construction%20workers%20and%20heavy%20machinery%2C%20industrial%20development%20project%2C%20professional%20news%20photography%2C%20bright%20daylight&width=400&height=250&seq=news1&orientation=landscape" alt="Expansion du port" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="text-sm text-primary font-medium mb-2">15 Octobre 2024</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Expansion du Terminal à Conteneurs</h3>
+<p class="text-gray-600 mb-4">Le Port de Dakar lance la construction d'un nouveau terminal de 50 hectares pour augmenter sa capacité de traitement...</p>
+<button class="text-primary font-medium hover:text-blue-700 transition-colors">
+Lire la suite <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</article>
+<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=Digital%20technology%20in%20port%20operations%2C%20automated%20cargo%20handling%20systems%2C%20smart%20port%20technology%2C%20computer%20screens%20showing%20logistics%20data%2C%20modern%20port%20control%20room&width=400&height=250&seq=news2&orientation=landscape" alt="Digitalisation" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="text-sm text-primary font-medium mb-2">12 Octobre 2024</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Digitalisation des Opérations</h3>
+<p class="text-gray-600 mb-4">Mise en place d'un système de gestion portuaire intelligent pour optimiser les flux de marchandises...</p>
+<button class="text-primary font-medium hover:text-blue-700 transition-colors">
+Lire la suite <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</article>
+<article class="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-xl transition-shadow">
+<img src="https://readdy.ai/api/search-image?query=Environmental%20sustainability%20in%20port%20operations%2C%20green%20energy%20solar%20panels%2C%20eco-friendly%20port%20facilities%2C%20environmental%20protection%20measures%2C%20clean%20technology&width=400&height=250&seq=news3&orientation=landscape" alt="Environnement" class="w-full h-48 object-cover object-top">
+<div class="p-6">
+<div class="text-sm text-primary font-medium mb-2">8 Octobre 2024</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Engagement Environnemental</h3>
+<p class="text-gray-600 mb-4">Lancement du programme "Port Vert" avec l'installation de panneaux solaires et la réduction des émissions...</p>
+<button class="text-primary font-medium hover:text-blue-700 transition-colors">
+Lire la suite <i class="ri-arrow-right-line ml-1"></i>
+</button>
+</div>
+</article>
+</div>
+<div class="text-center">
+<button class="border-2 border-primary text-primary px-8 py-3 !rounded-button whitespace-nowrap font-semibold hover:bg-primary hover:text-white transition-colors">
+Voir Toutes les Actualités
+</button>
+</div>
+</div>
+</section>
+<!-- <section id="services" class="py-16 bg-gray-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-12">
+<h2 class="text-4xl font-bold text-gray-900 mb-4">Services Portuaires</h2>
+<p class="text-xl text-gray-600">Une gamme complète de services pour vos besoins logistiques</p>
+</div>
+<div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-blue-100 rounded-xl mb-6 group-hover:bg-blue-200 transition-colors">
+<i class="ri-hand-coin-line ri-2x text-blue-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Manutention</h3>
+<p class="text-gray-600 text-sm mb-4">Services de chargement et déchargement avec équipements modernes</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-green-100 rounded-xl mb-6 group-hover:bg-green-200 transition-colors">
+<i class="ri-building-2-line ri-2x text-green-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Entreposage</h3>
+<p class="text-gray-600 text-sm mb-4">Espaces de stockage sécurisés et climatisés</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-orange-100 rounded-xl mb-6 group-hover:bg-orange-200 transition-colors">
+<i class="ri-compass-3-line ri-2x text-orange-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Pilotage</h3>
+<p class="text-gray-600 text-sm mb-4">Assistance à la navigation par des pilotes expérimentés</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-purple-100 rounded-xl mb-6 group-hover:bg-purple-200 transition-colors">
+<i class="ri-ship-line ri-2x text-purple-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Remorquage</h3>
+<p class="text-gray-600 text-sm mb-4">Services de remorquage portuaire 24h/24</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-red-100 rounded-xl mb-6 group-hover:bg-red-200 transition-colors">
+<i class="ri-oil-line ri-2x text-red-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Avitaillement</h3>
+<p class="text-gray-600 text-sm mb-4">Fourniture de carburant et provisions pour navires</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-indigo-100 rounded-xl mb-6 group-hover:bg-indigo-200 transition-colors">
+<i class="ri-shield-check-line ri-2x text-indigo-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Sécurité</h3>
+<p class="text-gray-600 text-sm mb-4">Surveillance et sécurité 24h/24 des installations</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-teal-100 rounded-xl mb-6 group-hover:bg-teal-200 transition-colors">
+<i class="ri-file-list-3-line ri-2x text-teal-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Douane</h3>
+<p class="text-gray-600 text-sm mb-4">Assistance aux formalités douanières</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+<div class="bg-white rounded-2xl p-6 shadow-lg hover:shadow-xl transition-shadow cursor-pointer group">
+<div class="w-16 h-16 flex items-center justify-center bg-pink-100 rounded-xl mb-6 group-hover:bg-pink-200 transition-colors">
+<i class="ri-customer-service-2-line ri-2x text-pink-600"></i>
+</div>
+<h3 class="text-xl font-bold text-gray-900 mb-3">Assistance</h3>
+<p class="text-gray-600 text-sm mb-4">Support client et assistance technique</p>
+<div class="text-primary font-medium text-sm">En savoir plus <i class="ri-arrow-right-line ml-1"></i></div>
+</div>
+</div>
+</div>
+</section> -->
+
+<footer class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23475569" fill-opacity="0.1"%3E%3Cpath d="M40 40c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm-24-24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl"></div>
+
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-20">
+<div class="grid lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-5">
+<div class="flex items-center mb-8">
+<div class="font-['Pacifico'] text-3xl text-white font-bold"><img src="logo.png" style="width: 200px; background-color: white; padding: 5px; border-radius: 5px;" alt=""></div>
+</div>
+<p class="text-gray-300 text-lg leading-relaxed mb-8">
+Porte d'entrée maritime de l'Afrique de l'Ouest depuis 1865, nous connectons les continents avec excellence, innovation et durabilité pour un avenir maritime prospère.
+</p>
+<div class="flex space-x-6">
+<div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-facebook-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-500 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-twitter-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-linkedin-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-youtube-fill text-white text-2xl"></i>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-7 grid md:grid-cols-3 gap-8">
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Navigation</h4>
+<div class="space-y-4">
+<a href="#accueil" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Accueil</a>
+<a href="#apropos" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">À Propos</a>
+<a href="#services" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Services</a>
+<a href="#trafics" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Trafics</a>
+<a href="#actualites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Actualités</a>
+<a href="#visites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Visites</a>
+<a href="#contact" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Services</h4>
+<div class="space-y-4">
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Manutention Portuaire</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Entreposage Sécurisé</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Pilotage Maritime</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Formalités Douanières</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Avitaillement</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Support Premium</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Contact</h4>
+<div class="space-y-4">
+<div class="flex items-start space-x-3">
+<i class="ri-map-pin-line text-primary text-lg mt-1"></i>
+<div class="text-gray-300 text-sm">
+Boulevard de la République<br>
+BP 3257 Dakar, Sénégal
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-phone-line text-primary text-lg"></i>
+<div class="text-gray-300">+221 33 823 92 00</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-mail-line text-primary text-lg"></i>
+<div class="text-gray-300">info@portdakar.sn</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-time-line text-primary text-lg"></i>
+<div class="text-gray-300 text-sm">24h/24 - 7j/7</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="border-t border-gray-700 pt-8">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="flex flex-wrap items-center space-x-6">
+<div class="text-gray-400 text-sm">Certifié ISO 9001:2015</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">ISPS Code Compliant</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">Green Port Certified</div>
+</div>
+<div class="flex flex-wrap items-center justify-end space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Mentions Légales</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Politique de Confidentialité</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Cookies</a>
+</div>
+</div>
+<div class="text-center mt-8 pt-8 border-t border-gray-700">
+<p class="text-gray-400 text-sm">
+© 2025 Port Autonome de Dakar. Tous droits réservés. | Développé avec ❤️ pour l'excellence maritime africaine.
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script id="mobile-menu">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const nav = document.querySelector('nav');
+mobileMenuBtn.addEventListener('click', function() {
+nav.classList.toggle('hidden');
+});
+});
+</script>
+<script id="charts-initialization">
+document.addEventListener('DOMContentLoaded', function() {
+const trafficChart = echarts.init(document.getElementById('trafficChart'));
+const cargoChart = echarts.init(document.getElementById('cargoChart'));
+const trafficOption = {
+animation: false,
+grid: { top: 20, right: 20, bottom: 40, left: 40 },
+xAxis: {
+type: 'category',
+data: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+axisLine: { lineStyle: { color: '#e5e7eb' } },
+axisTick: { show: false },
+axisLabel: { color: '#6b7280', fontSize: 12 }
+},
+yAxis: {
+type: 'value',
+axisLine: { show: false },
+axisTick: { show: false },
+axisLabel: { color: '#6b7280', fontSize: 12 },
+splitLine: { lineStyle: { color: '#f3f4f6' } }
+},
+series: [{
+data: [2100, 2300, 2500, 2200, 2800, 3100, 2900, 3200, 2700, 2400, 2600, 2800],
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: { color: 'rgba(87, 181, 231, 1)', width: 3 },
+areaStyle: {
+color: {
+type: 'linear',
+x: 0, y: 0, x2: 0, y2: 1,
+colorStops: [
+{ offset: 0, color: 'rgba(87, 181, 231, 0.1)' },
+{ offset: 1, color: 'rgba(87, 181, 231, 0.01)' }
+]
+}
+}
+}],
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.95)',
+borderColor: '#e5e7eb',
+textStyle: { color: '#1f2937' }
+}
+};
+const cargoOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.95)',
+borderColor: '#e5e7eb',
+textStyle: { color: '#1f2937' }
+},
+series: [{
+type: 'pie',
+radius: ['40%', '70%'],
+center: ['50%', '50%'],
+data: [
+{ value: 35, name: 'Conteneurs', itemStyle: { color: 'rgba(87, 181, 231, 1)', borderRadius: 4 } },
+{ value: 25, name: 'Vrac Sec', itemStyle: { color: 'rgba(141, 211, 199, 1)', borderRadius: 4 } },
+{ value: 20, name: 'Hydrocarbures', itemStyle: { color: 'rgba(251, 191, 114, 1)', borderRadius: 4 } },
+{ value: 20, name: 'Divers', itemStyle: { color: 'rgba(252, 141, 98, 1)', borderRadius: 4 } }
+],
+label: {
+color: '#1f2937',
+fontSize: 12
+}
+}]
+};
+trafficChart.setOption(trafficOption);
+cargoChart.setOption(cargoOption);
+window.addEventListener('resize', function() {
+trafficChart.resize();
+cargoChart.resize();
+});
+});
+</script>
+<script id="smooth-scrolling">
+document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+});
+</script>
+
+<script src="https://static.readdy.ai/static/share.js"></script></body>
+</html>

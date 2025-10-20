@@ -1,0 +1,776 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head><script src="https://static.readdy.ai/static/e.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Autonome de Dakar - Porte d'Entrée de l'Afrique de l'Ouest</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#1e40af',
+secondary: '#0ea5e9'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+.custom-checkbox {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #1e40af;
+border-color: #1e40af;
+}
+.custom-checkbox:checked::after {
+content: '✓';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 0.75rem;
+font-weight: bold;
+}
+.custom-radio {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-radio:checked {
+border-color: #1e40af;
+}
+.custom-radio:checked::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 0.5rem;
+height: 0.5rem;
+background-color: #1e40af;
+border-radius: 50%;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="w-full bg-white p-2 shadow-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center">
+<div><img style="width: 180px;" src="logo.png" alt=""></div>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#accueil" class="text-gray-900 hover:text-primary transition-colors">Accueil</a>
+<a href="#apropos" class="text-gray-700 hover:text-primary transition-colors">À Propos</a>
+<a href="#actualites" class="text-gray-700 hover:text-primary transition-colors">Actualités</a>
+<a href="#trafics" class="text-gray-700 hover:text-primary transition-colors">Trafics</a>
+<a href="#services" class="text-gray-700 hover:text-primary transition-colors">Services</a>
+<a href="#visites" class="text-gray-700 hover:text-primary transition-colors">Visites</a>
+<a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<button class="bg-secondary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-700 transition-colors">
+Réserver une Visite
+</button>
+<div class="md:hidden">
+<button id="mobile-menu-btn" class="w-8 h-8 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+
+
+<section id="trafics" class="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-white overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23e0f2fe" fill-opacity="0.3"%3E%3Cpath d="M40 40c0-8.8 7.2-16 16-16s16 7.2 16 16-7.2 16-16 16-16-7.2-16-16zm-32-32c0-8.8 7.2-16 16-16s16 7.2 16 16-7.2 16-16 16-16-7.2-16-16z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-20"></div>
+<div class="absolute top-10 right-20 w-96 h-96 bg-gradient-to-bl from-primary/8 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tr from-secondary/8 to-transparent rounded-full blur-3xl"></div>
+<div class="relative min-h-[50vh] flex items-center" style="background-image: url('https://readdy.ai/api/search-image?query=Advanced%20port%20control%20center%20with%20multiple%20screens%20showing%20real-time%20traffic%20data%2C%20sophisticated%20maritime%20monitoring%20systems%2C%20professional%20port%20operations%20dashboard%2C%20modern%20technology%20control%20room%20with%20panoramic%20port%20view%2C%20digital%20analytics%20and%20traffic%20management%20systems&width=1920&height=600&seq=trafficbanner1&orientation=landscape'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-slate-900/85 via-slate-800/70 to-slate-900/40"></div>
+<div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl">
+<div class="mb-8 mt-6">
+<span class="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-semibold border border-white/20">
+<i class="ri-dashboard-3-line mr-3 text-lg"></i>
+Centre de Contrôle Maritime
+</span>
+</div>
+<h1 class="text-7xl font-bold text-white mb-8 leading-tight">
+Trafic &<br>
+<span class="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Statistiques</span>
+</h1>
+<p class="text-2xl text-blue-100 mb-12 leading-relaxed font-light max-w-3xl">
+Surveillance temps réel et analyse approfondie de l'ensemble des flux maritimes, terrestres et logistiques du port
+</p>
+<div class="flex flex-col sm:flex-row gap-6 mb-6">
+<button class="group bg-white text-primary px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300">
+<span class="flex items-center">
+Données Live
+<i class="ri-pulse-line ml-3 group-hover:scale-110 transition-transform"></i>
+</span>
+</button>
+<button class="group border-2 border-white text-white px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:bg-white hover:text-primary hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300">
+<span class="flex items-center">
+<i class="ri-download-line mr-3"></i>
+Télécharger Rapport
+</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<div class="relative py-24">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-20">
+<div class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-green-100 to-emerald-100 text-green-700 text-sm font-semibold mb-8 border border-green-200">
+<div class="w-3 h-3 bg-green-500 rounded-full mr-3 animate-pulse"></div>
+Monitoring Temps Réel • Mise à jour: 30 sec
+</div>
+<h2 class="text-5xl font-bold text-gray-900 mb-8">Tableau de Bord Opérationnel</h2>
+<p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Supervision intégrale des activités portuaires avec alertes intelligentes et analyses prédictives avancées</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8 mb-20">
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700 text-white rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-ship-line ri-2x"></i>
+</div>
+<div class="flex flex-col items-end">
+<div class="w-4 h-4 bg-blue-500 rounded-full animate-pulse mb-2"></div>
+<div class="text-xs text-blue-600 font-medium">LIVE</div>
+</div>
+</div>
+<div class="text-5xl font-bold text-blue-600 mb-4 font-mono group-hover:text-blue-700 transition-colors">47</div>
+<div class="text-gray-800 font-bold text-lg mb-3">Navires en Escale</div>
+<div class="flex items-center justify-between">
+<div class="text-sm text-gray-600">+3 depuis hier</div>
+<div class="flex items-center text-green-600 text-sm font-medium">
+<i class="ri-arrow-up-line mr-1"></i>
+6.8%
+</div>
+</div>
+<div class="mt-6 bg-blue-50/50 rounded-2xl p-4">
+<div class="text-xs text-blue-700 font-medium mb-2">Prochaines Arrivées</div>
+<div class="text-sm text-gray-700">3 navires prévus dans 2h</div>
+</div>
+</div>
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-700 text-white rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-box-3-line ri-2x"></i>
+</div>
+<div class="flex flex-col items-end">
+<div class="w-4 h-4 bg-green-500 rounded-full animate-pulse mb-2"></div>
+<div class="text-xs text-green-600 font-medium">LIVE</div>
+</div>
+</div>
+<div class="text-5xl font-bold text-green-600 mb-4 font-mono group-hover:text-green-700 transition-colors">18,247</div>
+<div class="text-gray-800 font-bold text-lg mb-3">Conteneurs EVP</div>
+<div class="flex items-center justify-between">
+<div class="text-sm text-gray-600">+247 aujourd'hui</div>
+<div class="flex items-center text-green-600 text-sm font-medium">
+<i class="ri-arrow-up-line mr-1"></i>
+12.4%
+</div>
+</div>
+<div class="mt-6 bg-green-50/50 rounded-2xl p-4">
+<div class="text-xs text-green-700 font-medium mb-2">Cadence Horaire</div>
+<div class="text-sm text-gray-700">35 EVP/heure</div>
+</div>
+</div>
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-700 text-white rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-scales-3-line ri-2x"></i>
+</div>
+<div class="flex flex-col items-end">
+<div class="w-4 h-4 bg-orange-500 rounded-full animate-pulse mb-2"></div>
+<div class="text-xs text-orange-600 font-medium">LIVE</div>
+</div>
+</div>
+<div class="text-5xl font-bold text-orange-600 mb-4 font-mono group-hover:text-orange-700 transition-colors">2.8M</div>
+<div class="text-gray-800 font-bold text-lg mb-3">Tonnes Mensuelles</div>
+<div class="flex items-center justify-between">
+<div class="text-sm text-gray-600">93% objectif</div>
+<div class="flex items-center text-green-600 text-sm font-medium">
+<i class="ri-arrow-up-line mr-1"></i>
+18.7%
+</div>
+</div>
+<div class="mt-6 bg-orange-50/50 rounded-2xl p-4">
+<div class="text-xs text-orange-700 font-medium mb-2">Reste à Traiter</div>
+<div class="text-sm text-gray-700">187k tonnes</div>
+</div>
+</div>
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-700 text-white rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-dashboard-3-line ri-2x"></i>
+</div>
+<div class="flex flex-col items-end">
+<div class="w-4 h-4 bg-purple-500 rounded-full animate-pulse mb-2"></div>
+<div class="text-xs text-purple-600 font-medium">LIVE</div>
+</div>
+</div>
+<div class="text-5xl font-bold text-purple-600 mb-4 font-mono group-hover:text-purple-700 transition-colors">92%</div>
+<div class="text-gray-800 font-bold text-lg mb-3">Occupation Quais</div>
+<div class="flex items-center justify-between">
+<div class="text-sm text-gray-600">Optimal</div>
+<div class="flex items-center text-orange-600 text-sm font-medium">
+<i class="ri-arrow-up-line mr-1"></i>
+2.1%
+</div>
+</div>
+<div class="mt-6 bg-purple-50/50 rounded-2xl p-4">
+<div class="text-xs text-purple-700 font-medium mb-2">Postes Libres</div>
+<div class="text-sm text-gray-700">2 sur 25</div>
+</div>
+</div>
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3 hover:scale-105">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-red-500 to-red-700 text-white rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-time-line ri-2x"></i>
+</div>
+<div class="flex flex-col items-end">
+<div class="w-4 h-4 bg-red-500 rounded-full animate-pulse mb-2"></div>
+<div class="text-xs text-red-600 font-medium">LIVE</div>
+</div>
+</div>
+<div class="text-5xl font-bold text-red-600 mb-4 font-mono group-hover:text-red-700 transition-colors">4.2h</div>
+<div class="text-gray-800 font-bold text-lg mb-3">Temps Moyen</div>
+<div class="flex items-center justify-between">
+<div class="text-sm text-gray-600">Par navire</div>
+<div class="flex items-center text-green-600 text-sm font-medium">
+<i class="ri-arrow-down-line mr-1"></i>
+15.3%
+</div>
+</div>
+<div class="mt-6 bg-red-50/50 rounded-2xl p-4">
+<div class="text-xs text-red-700 font-medium mb-2">Objectif</div>
+<div class="text-sm text-gray-700">≤ 6h par navire</div>
+</div>
+</div>
+</div>
+<div class="grid lg:grid-cols-12 gap-12 mb-20">
+<div class="lg:col-span-8 bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30">
+<div class="flex items-center justify-between mb-10">
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Évolution du Trafic</h3>
+<p class="text-gray-600">Analyse temporelle des flux de marchandises</p>
+</div>
+<div class="flex items-center space-x-6">
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 bg-blue-500 rounded-full"></div>
+<span class="text-sm text-gray-700 font-medium">Conteneurs (EVP)</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 bg-green-500 rounded-full"></div>
+<span class="text-sm text-gray-700 font-medium">Vrac (Tonnes)</span>
+</div>
+<div class="flex items-center space-x-2">
+<div class="w-4 h-4 bg-orange-500 rounded-full"></div>
+<span class="text-sm text-gray-700 font-medium">Roulier (Unités)</span>
+</div>
+</div>
+</div>
+<div id="trafficChart" class="h-96"></div>
+<div class="grid grid-cols-3 gap-6 mt-8 pt-8 border-t border-gray-100">
+<div class="text-center">
+<div class="text-2xl font-bold text-blue-600 mb-2">+18.5%</div>
+<div class="text-sm text-gray-600">Croissance annuelle</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-green-600 mb-2">97.2%</div>
+<div class="text-sm text-gray-600">Taux de service</div>
+</div>
+<div class="text-center">
+<div class="text-2xl font-bold text-orange-600 mb-2">4.8j</div>
+<div class="text-sm text-gray-600">Séjour moyen</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-4 space-y-8">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/30">
+<div class="flex items-center justify-between mb-8">
+<div>
+<h4 class="text-2xl font-bold text-gray-900 mb-2">Répartition</h4>
+<p class="text-gray-600 text-sm">Types de marchandises</p>
+</div>
+<div class="w-12 h-12 bg-gradient-to-br from-primary to-secondary rounded-2xl flex items-center justify-center">
+<i class="ri-pie-chart-line text-white text-xl"></i>
+</div>
+</div>
+<div id="cargoChart" class="h-64"></div>
+</div>
+<div class="bg-gradient-to-br from-blue-50/80 to-cyan-50/80 backdrop-blur-sm rounded-3xl p-8 border border-blue-100/50">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i class="ri-focus-3-line ri-2x text-white"></i>
+</div>
+<h4 class="text-xl font-bold text-gray-900 mb-2">Focus Temps Réel</h4>
+</div>
+<div class="space-y-4">
+<div class="bg-white/70 rounded-2xl p-4 border border-blue-200/50">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-gray-800">Navires en Attente</span>
+<span class="text-blue-600 font-bold">7</span>
+</div>
+<div class="text-xs text-gray-600 mt-1">Temps d'attente moyen: 2.1h</div>
+</div>
+<div class="bg-white/70 rounded-2xl p-4 border border-green-200/50">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-gray-800">Grues Actives</span>
+<span class="text-green-600 font-bold">18/22</span>
+</div>
+<div class="text-xs text-gray-600 mt-1">Taux d'utilisation: 82%</div>
+</div>
+<div class="bg-white/70 rounded-2xl p-4 border border-orange-200/50">
+<div class="flex items-center justify-between">
+<span class="text-sm font-medium text-gray-800">Camions en File</span>
+<span class="text-orange-600 font-bold">156</span>
+</div>
+<div class="text-xs text-gray-600 mt-1">Temps d'attente: 45min</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-slate-50/50 to-blue-50/30 rounded-3xl p-12 border border-blue-100/30 mb-20">
+<div class="text-center mb-12">
+<h3 class="text-4xl font-bold text-gray-900 mb-4">Alertes & Notifications</h3>
+<p class="text-xl text-gray-600">Système de surveillance intelligente</p>
+</div>
+<div class="grid md:grid-cols-3 gap-8">
+<div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-green-200/50 shadow-lg">
+<div class="flex items-start space-x-4">
+<div class="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center mt-1">
+<i class="ri-checkbox-circle-line text-green-600 text-xl"></i>
+</div>
+<div class="flex-1">
+<div class="text-green-700 font-semibold text-sm mb-2">SYSTÈME NORMAL</div>
+<div class="text-gray-800 font-medium mb-2">Opérations Fluides</div>
+<div class="text-sm text-gray-600">Tous les indicateurs dans les normes optimales</div>
+<div class="text-xs text-green-600 mt-2">Dernière vérification: Il y a 2 min</div>
+</div>
+</div>
+</div>
+<div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-yellow-200/50 shadow-lg">
+<div class="flex items-start space-x-4">
+<div class="w-12 h-12 bg-yellow-100 rounded-xl flex items-center justify-center mt-1">
+<i class="ri-alert-line text-yellow-600 text-xl"></i>
+</div>
+<div class="flex-1">
+<div class="text-yellow-700 font-semibold text-sm mb-2">ATTENTION</div>
+<div class="text-gray-800 font-medium mb-2">Forte Affluence Prévue</div>
+<div class="text-sm text-gray-600">6 navires programmés demain matin</div>
+<div class="text-xs text-yellow-600 mt-2">Planification en cours</div>
+</div>
+</div>
+</div>
+<div class="bg-white/80 backdrop-blur-sm rounded-2xl p-6 border border-blue-200/50 shadow-lg">
+<div class="flex items-start space-x-4">
+<div class="w-12 h-12 bg-blue-100 rounded-xl flex items-center justify-center mt-1">
+<i class="ri-information-line text-blue-600 text-xl"></i>
+</div>
+<div class="flex-1">
+<div class="text-blue-700 font-semibold text-sm mb-2">INFORMATION</div>
+<div class="text-gray-800 font-medium mb-2">Maintenance Programmée</div>
+<div class="text-sm text-gray-600">Grue n°5 indisponible 14h-18h</div>
+<div class="text-xs text-blue-600 mt-2">Impact minimal prévu</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30">
+<div class="flex items-center justify-between mb-10">
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Analyse Comparative</h3>
+<p class="text-gray-600">Performance vs périodes précédentes</p>
+</div>
+<div class="flex space-x-4">
+<button class="px-6 py-3 bg-primary text-white rounded-xl font-medium hover:bg-blue-700 transition-colors">Mensuel</button>
+<button class="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl font-medium hover:bg-gray-200 transition-colors">Trimestriel</button>
+<button class="px-6 py-3 bg-gray-100 text-gray-700 rounded-xl font-medium hover:bg-gray-200 transition-colors">Annuel</button>
+</div>
+</div>
+<div id="comparisonChart" class="h-80"></div>
+</div>
+</div>
+</div>
+</section>
+
+
+<footer class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23475569" fill-opacity="0.1"%3E%3Cpath d="M40 40c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm-24-24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl"></div>
+
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-20">
+<div class="grid lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-5">
+<div class="flex items-center mb-8">
+<div class="font-['Pacifico'] text-3xl text-white font-bold"><img src="logo.png" style="width: 200px; background-color: white; padding: 5px; border-radius: 5px;" alt=""></div>
+</div>
+<p class="text-gray-300 text-lg leading-relaxed mb-8">
+Porte d'entrée maritime de l'Afrique de l'Ouest depuis 1865, nous connectons les continents avec excellence, innovation et durabilité pour un avenir maritime prospère.
+</p>
+<div class="flex space-x-6">
+<div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-facebook-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-500 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-twitter-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-linkedin-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-youtube-fill text-white text-2xl"></i>
+</div>
+</div>
+</div>
+
+<div class="lg:col-span-7 grid md:grid-cols-3 gap-8">
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Navigation</h4>
+<div class="space-y-4">
+<a href="#accueil" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Accueil</a>
+<a href="#apropos" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">À Propos</a>
+<a href="#services" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Services</a>
+<a href="#trafics" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Trafics</a>
+<a href="#actualites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Actualités</a>
+<a href="#visites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Visites</a>
+<a href="#contact" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Services</h4>
+<div class="space-y-4">
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Manutention Portuaire</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Entreposage Sécurisé</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Pilotage Maritime</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Formalités Douanières</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Avitaillement</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Support Premium</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Contact</h4>
+<div class="space-y-4">
+<div class="flex items-start space-x-3">
+<i class="ri-map-pin-line text-primary text-lg mt-1"></i>
+<div class="text-gray-300 text-sm">
+Boulevard de la République<br>
+BP 3257 Dakar, Sénégal
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-phone-line text-primary text-lg"></i>
+<div class="text-gray-300">+221 33 823 92 00</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-mail-line text-primary text-lg"></i>
+<div class="text-gray-300">info@portdakar.sn</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-time-line text-primary text-lg"></i>
+<div class="text-gray-300 text-sm">24h/24 - 7j/7</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="border-t border-gray-700 pt-8">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="flex flex-wrap items-center space-x-6">
+<div class="text-gray-400 text-sm">Certifié ISO 9001:2015</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">ISPS Code Compliant</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">Green Port Certified</div>
+</div>
+<div class="flex flex-wrap items-center justify-end space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Mentions Légales</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Politique de Confidentialité</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Cookies</a>
+</div>
+</div>
+<div class="text-center mt-8 pt-8 border-t border-gray-700">
+<p class="text-gray-400 text-sm">
+© 2025 Port Autonome de Dakar. Tous droits réservés. | Développé avec ❤️ pour l'excellence maritime africaine.
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script id="mobile-menu">
+document.addEventListener('DOMContentLoaded', function() {
+const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+const nav = document.querySelector('nav');
+mobileMenuBtn.addEventListener('click', function() {
+nav.classList.toggle('hidden');
+});
+});
+</script>
+<script id="charts-initialization">
+document.addEventListener('DOMContentLoaded', function() {
+const trafficChart = echarts.init(document.getElementById('trafficChart'));
+const cargoChart = echarts.init(document.getElementById('cargoChart'));
+const comparisonChart = echarts.init(document.getElementById('comparisonChart'));
+const trafficOption = {
+animation: false,
+grid: { top: 30, right: 30, bottom: 60, left: 60 },
+legend: {
+data: ['Conteneurs (EVP)', 'Vrac (Tonnes)', 'Roulier (Unités)'],
+top: 10,
+textStyle: { color: '#1f2937', fontSize: 12 }
+},
+xAxis: {
+type: 'category',
+data: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'],
+axisLine: { lineStyle: { color: '#e5e7eb' } },
+axisTick: { show: false },
+axisLabel: { color: '#6b7280', fontSize: 12 }
+},
+yAxis: [{
+type: 'value',
+name: 'EVP / Unités',
+position: 'left',
+axisLine: { show: false },
+axisTick: { show: false },
+axisLabel: { color: '#6b7280', fontSize: 12 },
+splitLine: { lineStyle: { color: '#f3f4f6' } }
+}, {
+type: 'value',
+name: 'Tonnes (x1000)',
+position: 'right',
+axisLine: { show: false },
+axisTick: { show: false },
+axisLabel: { color: '#6b7280', fontSize: 12 },
+splitLine: { show: false }
+}],
+series: [{
+name: 'Conteneurs (EVP)',
+data: [15200, 16800, 18100, 16900, 19500, 21200, 20800, 22400, 19600, 17800, 18900, 20100],
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: { color: 'rgba(59, 130, 246, 1)', width: 3 },
+areaStyle: {
+color: {
+type: 'linear',
+x: 0, y: 0, x2: 0, y2: 1,
+colorStops: [
+{ offset: 0, color: 'rgba(59, 130, 246, 0.1)' },
+{ offset: 1, color: 'rgba(59, 130, 246, 0.01)' }
+]
+}
+},
+yAxisIndex: 0
+}, {
+name: 'Vrac (Tonnes)',
+data: [180, 195, 210, 198, 225, 240, 235, 250, 220, 205, 215, 230],
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: { color: 'rgba(34, 197, 94, 1)', width: 3 },
+areaStyle: {
+color: {
+type: 'linear',
+x: 0, y: 0, x2: 0, y2: 1,
+colorStops: [
+{ offset: 0, color: 'rgba(34, 197, 94, 0.1)' },
+{ offset: 1, color: 'rgba(34, 197, 94, 0.01)' }
+]
+}
+},
+yAxisIndex: 1
+}, {
+name: 'Roulier (Unités)',
+data: [2800, 3100, 3400, 3200, 3600, 3900, 3700, 4100, 3500, 3300, 3500, 3800],
+type: 'line',
+smooth: true,
+symbol: 'none',
+lineStyle: { color: 'rgba(249, 115, 22, 1)', width: 3 },
+areaStyle: {
+color: {
+type: 'linear',
+x: 0, y: 0, x2: 0, y2: 1,
+colorStops: [
+{ offset: 0, color: 'rgba(249, 115, 22, 0.1)' },
+{ offset: 1, color: 'rgba(249, 115, 22, 0.01)' }
+]
+}
+},
+yAxisIndex: 0
+}],
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.95)',
+borderColor: '#e5e7eb',
+textStyle: { color: '#1f2937' },
+axisPointer: {
+type: 'cross',
+label: { backgroundColor: '#6a7985' }
+}
+}
+};
+const cargoOption = {
+animation: false,
+tooltip: {
+trigger: 'item',
+backgroundColor: 'rgba(255, 255, 255, 0.95)',
+borderColor: '#e5e7eb',
+textStyle: { color: '#1f2937' },
+formatter: '{a} <br/>{b}: {c}% ({d}%)'
+},
+series: [{
+name: 'Marchandises',
+type: 'pie',
+radius: ['50%', '80%'],
+center: ['50%', '50%'],
+data: [
+{ value: 42, name: 'Conteneurs', itemStyle: { color: 'rgba(59, 130, 246, 1)', borderRadius: 6 } },
+{ value: 28, name: 'Vrac Sec', itemStyle: { color: 'rgba(34, 197, 94, 1)', borderRadius: 6 } },
+{ value: 18, name: 'Hydrocarbures', itemStyle: { color: 'rgba(249, 115, 22, 1)', borderRadius: 6 } },
+{ value: 12, name: 'Roulier', itemStyle: { color: 'rgba(168, 85, 247, 1)', borderRadius: 6 } }
+],
+label: {
+color: '#1f2937',
+fontSize: 11,
+fontWeight: 'bold'
+},
+labelLine: {
+lineStyle: { color: '#9ca3af' }
+}
+}]
+};
+const comparisonOption = {
+animation: false,
+grid: { top: 30, right: 30, bottom: 60, left: 60 },
+legend: {
+data: ['Mois Actuel', 'Mois Précédent', 'Même Mois Année Précédente'],
+top: 10,
+textStyle: { color: '#1f2937', fontSize: 12 }
+},
+xAxis: {
+type: 'category',
+data: ['Sem 1', 'Sem 2', 'Sem 3', 'Sem 4'],
+axisLine: { lineStyle: { color: '#e5e7eb' } },
+axisTick: { show: false },
+axisLabel: { color: '#6b7280', fontSize: 12 }
+},
+yAxis: {
+type: 'value',
+name: 'Tonnes (x1000)',
+axisLine: { show: false },
+axisTick: { show: false },
+axisLabel: { color: '#6b7280', fontSize: 12 },
+splitLine: { lineStyle: { color: '#f3f4f6' } }
+},
+series: [{
+name: 'Mois Actuel',
+data: [680, 720, 750, 680],
+type: 'bar',
+itemStyle: { 
+color: 'rgba(59, 130, 246, 1)', 
+borderRadius: [4, 4, 0, 0] 
+},
+barWidth: '25%'
+}, {
+name: 'Mois Précédent',
+data: [620, 660, 690, 640],
+type: 'bar',
+itemStyle: { 
+color: 'rgba(141, 211, 199, 1)', 
+borderRadius: [4, 4, 0, 0] 
+},
+barWidth: '25%'
+}, {
+name: 'Même Mois Année Précédente',
+data: [580, 610, 630, 590],
+type: 'bar',
+itemStyle: { 
+color: 'rgba(251, 191, 114, 1)', 
+borderRadius: [4, 4, 0, 0] 
+},
+barWidth: '25%'
+}],
+tooltip: {
+trigger: 'axis',
+backgroundColor: 'rgba(255, 255, 255, 0.95)',
+borderColor: '#e5e7eb',
+textStyle: { color: '#1f2937' }
+}
+};
+trafficChart.setOption(trafficOption);
+cargoChart.setOption(cargoOption);
+comparisonChart.setOption(comparisonOption);
+window.addEventListener('resize', function() {
+trafficChart.resize();
+cargoChart.resize();
+comparisonChart.resize();
+});
+});
+</script>
+<script id="smooth-scrolling">
+document.addEventListener('DOMContentLoaded', function() {
+const links = document.querySelectorAll('a[href^="#"]');
+links.forEach(link => {
+link.addEventListener('click', function(e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({
+behavior: 'smooth',
+block: 'start'
+});
+}
+});
+});
+});
+</script>
+
+<script src="https://static.readdy.ai/static/share.js"></script></body>
+</html>

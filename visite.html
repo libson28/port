@@ -1,0 +1,816 @@
+
+<!DOCTYPE html>
+<html lang="fr">
+<head><script src="https://static.readdy.ai/static/e.js"></script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Port Autonome de Dakar - Porte d'Entrée de l'Afrique de l'Ouest</title>
+<script src="https://cdn.tailwindcss.com/3.4.16"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/remixicon/4.6.0/remixicon.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/echarts/5.5.0/echarts.min.js"></script>
+<script>
+tailwind.config = {
+theme: {
+extend: {
+colors: {
+primary: '#1e40af',
+secondary: '#0ea5e9'
+},
+borderRadius: {
+'none': '0px',
+'sm': '4px',
+DEFAULT: '8px',
+'md': '12px',
+'lg': '16px',
+'xl': '20px',
+'2xl': '24px',
+'3xl': '32px',
+'full': '9999px',
+'button': '8px'
+}
+}
+}
+}
+</script>
+<style>
+:where([class^="ri-"])::before {
+content: "\f3c2";
+}
+.custom-checkbox {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 4px;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-checkbox:checked {
+background-color: #1e40af;
+border-color: #1e40af;
+}
+.custom-checkbox:checked::after {
+content: '✓';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+color: white;
+font-size: 0.75rem;
+font-weight: bold;
+}
+.custom-radio {
+appearance: none;
+width: 1.25rem;
+height: 1.25rem;
+border: 2px solid #d1d5db;
+border-radius: 50%;
+background-color: white;
+cursor: pointer;
+position: relative;
+}
+.custom-radio:checked {
+border-color: #1e40af;
+}
+.custom-radio:checked::after {
+content: '';
+position: absolute;
+top: 50%;
+left: 50%;
+transform: translate(-50%, -50%);
+width: 0.5rem;
+height: 0.5rem;
+background-color: #1e40af;
+border-radius: 50%;
+}
+</style>
+</head>
+<body class="bg-white">
+<header class="w-full bg-white p-2 shadow-sm sticky top-0 z-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center">
+<div><img style="width: 180px;" src="logo.png" alt=""></div>
+</div>
+<nav class="hidden md:flex items-center space-x-8">
+<a href="#accueil" class="text-gray-900 hover:text-primary transition-colors">Accueil</a>
+<a href="#apropos" class="text-gray-700 hover:text-primary transition-colors">À Propos</a>
+<a href="#actualites" class="text-gray-700 hover:text-primary transition-colors">Actualités</a>
+<a href="#trafics" class="text-gray-700 hover:text-primary transition-colors">Trafics</a>
+<a href="#services" class="text-gray-700 hover:text-primary transition-colors">Services</a>
+<a href="#visites" class="text-gray-700 hover:text-primary transition-colors">Visites</a>
+<a href="#contact" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
+</nav>
+<button class="bg-secondary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-700 transition-colors">
+Réserver une Visite
+</button>
+<div class="md:hidden">
+<button id="mobile-menu-btn" class="w-8 h-8 flex items-center justify-center text-gray-700">
+<i class="ri-menu-line ri-lg"></i>
+</button>
+</div>
+</div>
+</div>
+</header>
+
+<section id="visites" class="relative min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/20 to-white overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23dbeafe" fill-opacity="0.3"%3E%3Cpath d="M40 40c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm-24-24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-40"></div>
+<div class="absolute top-20 right-10 w-96 h-96 bg-gradient-to-bl from-primary/8 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-20 left-10 w-80 h-80 bg-gradient-to-tr from-secondary/8 to-transparent rounded-full blur-3xl"></div>
+<div class="relative min-h-[60vh] flex items-center" style="background-image: url('data:image/jpeg;base64,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'); background-size: cover; background-position: center;">
+<div class="absolute inset-0 bg-gradient-to-r from-slate-900/90 via-slate-900/70 to-slate-900/30"></div>
+<div class="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="max-w-4xl">
+<div class="mb-8 mt-6">
+<span class="inline-flex items-center px-6 py-3 rounded-full bg-white/10 backdrop-blur-sm text-white text-sm font-semibold border border-white/20">
+<i class="ri-compass-3-line mr-3 text-lg"></i>
+Expériences Immersives Portuaires
+</span>
+</div>
+<h1 class="text-7xl font-bold text-white mb-8 leading-tight">
+Visites &<br>
+<span class="bg-gradient-to-r from-white to-blue-200 bg-clip-text text-transparent">Découvertes</span>
+</h1>
+<p class="text-2xl text-blue-100 mb-12 leading-relaxed font-light max-w-3xl">
+Explorez les coulisses du plus grand port d'Afrique de l'Ouest à travers des expériences uniques alliant technologie de pointe et expertise maritime
+</p>
+<div class="flex flex-col sm:flex-row gap-6 mb-8">
+<button class="group bg-white text-primary px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:shadow-2xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center">
+Réserver une Visite
+<i class="ri-arrow-down-line ml-3 group-hover:translate-y-1 transition-transform"></i>
+</span>
+</button>
+<button class="group border-2 border-white text-white px-10 py-5 !rounded-button whitespace-nowrap text-lg font-semibold hover:bg-white hover:text-primary hover:shadow-lg transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center">
+<i class="ri-vr-box-line mr-3"></i>
+Visite Virtuelle 360°
+</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<br>
+<div class="relative py-24">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-20">
+<div class="inline-flex items-center px-6 py-3 rounded-full bg-gradient-to-r from-primary/10 to-secondary/10 text-primary text-sm font-semibold mb-8 border border-primary/20">
+<i class="ri-eye-line mr-3 text-lg"></i>
+Découvertes Extraordinaires
+</div>
+<h2 class="text-5xl font-bold text-gray-900 mb-8">Explorez Notre Univers Maritime</h2>
+<p class="text-xl text-gray-600 max-w-4xl mx-auto leading-relaxed">Choisissez parmi nos expériences exclusives conçues pour vous faire découvrir l'excellence portuaire sous tous ses aspects</p>
+</div>
+<div class="grid lg:grid-cols-3 gap-12 mb-20">
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-700 rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-group-line ri-2x text-white"></i>
+</div>
+<div class="text-right">
+<div class="text-3xl font-bold text-blue-600 mb-1">2h30</div>
+<div class="text-xs text-gray-600 uppercase tracking-wider">Durée Visite</div>
+</div>
+</div>
+<h3 class="text-3xl font-bold text-gray-900 mb-6 group-hover:text-blue-600 transition-colors">Visite Guidée Classique</h3>
+<p class="text-gray-600 mb-8 leading-relaxed">Découvrez les installations portuaires accompagné d'un guide expert maritime. Accès aux terminaux, espaces de stockage et centre de contrôle avec explications détaillées des opérations.</p>
+<div class="space-y-4 mb-8">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-blue-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Guide maritime certifié</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-blue-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Accès zones sécurisées</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-blue-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Documentation exclusive</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-blue-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-blue-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Groupes max 25 personnes</span>
+</div>
+</div>
+<div class="bg-blue-50/50 rounded-2xl p-6 mb-6">
+<div class="grid grid-cols-2 gap-4 text-center">
+<div>
+<div class="text-2xl font-bold text-blue-600 mb-1">Gratuit</div>
+<div class="text-xs text-gray-600">Particuliers</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-blue-600 mb-1">5j/7</div>
+<div class="text-xs text-gray-600">Disponibilité</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-blue-500 to-blue-700 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center justify-center">
+Réserver cette Visite
+<i class="ri-calendar-event-line ml-3"></i>
+</span>
+</button>
+</div>
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-vr-box-line ri-2x text-white"></i>
+</div>
+<div class="text-right">
+<div class="text-3xl font-bold text-purple-600 mb-1">45min</div>
+<div class="text-xs text-gray-600 uppercase tracking-wider">Expérience VR</div>
+</div>
+</div>
+<h3 class="text-3xl font-bold text-gray-900 mb-6 group-hover:text-purple-600 transition-colors">Visite Virtuelle 360°</h3>
+<p class="text-gray-600 mb-8 leading-relaxed">Explorez le port depuis chez vous grâce à notre technologie VR avancée. Immersion totale dans les opérations portuaires avec interactions et explications en temps réel.</p>
+<div class="space-y-4 mb-8">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-purple-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Technologie VR haute définition</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-purple-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">12 zones interactives</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-purple-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Audio multilingue inclus</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-purple-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-purple-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Disponible 24h/24</span>
+</div>
+</div>
+<div class="bg-purple-50/50 rounded-2xl p-6 mb-6">
+<div class="grid grid-cols-2 gap-4 text-center">
+<div>
+<div class="text-2xl font-bold text-purple-600 mb-1">Gratuit</div>
+<div class="text-xs text-gray-600">Accès libre</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-purple-600 mb-1">HD 4K</div>
+<div class="text-xs text-gray-600">Qualité image</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-purple-500 to-purple-700 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center justify-center">
+Lancer l'Expérience VR
+<i class="ri-external-link-line ml-3"></i>
+</span>
+</button>
+</div>
+<div class="group bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-3">
+<div class="flex items-center justify-between mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-700 rounded-2xl group-hover:scale-110 transition-transform shadow-xl">
+<i class="ri-vip-crown-line ri-2x text-white"></i>
+</div>
+<div class="text-right">
+<div class="text-3xl font-bold text-green-600 mb-1">4h</div>
+<div class="text-xs text-gray-600 uppercase tracking-wider">Expérience VIP</div>
+</div>
+</div>
+<h3 class="text-3xl font-bold text-gray-900 mb-6 group-hover:text-green-600 transition-colors">Visite Premium Exclusive</h3>
+<p class="text-gray-600 mb-8 leading-relaxed">Expérience privilégiée avec accès aux zones réservées, rencontre avec le directeur général, déjeuner gastronomique et présentation stratégique personnalisée.</p>
+<div class="space-y-4 mb-8">
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-green-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Accès zones VIP exclusives</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-green-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Rencontre direction générale</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-green-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Déjeuner d'affaires inclus</span>
+</div>
+<div class="flex items-center space-x-3">
+<div class="w-6 h-6 bg-green-100 rounded-full flex items-center justify-center">
+<i class="ri-check-line text-green-600 text-sm"></i>
+</div>
+<span class="text-sm text-gray-700">Documentation stratégique</span>
+</div>
+</div>
+<div class="bg-green-50/50 rounded-2xl p-6 mb-6">
+<div class="grid grid-cols-2 gap-4 text-center">
+<div>
+<div class="text-2xl font-bold text-green-600 mb-1">Sur RDV</div>
+<div class="text-xs text-gray-600">Réservation</div>
+</div>
+<div>
+<div class="text-2xl font-bold text-green-600 mb-1">≤ 10</div>
+<div class="text-xs text-gray-600">Personnes max</div>
+</div>
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-green-500 to-green-700 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center justify-center">
+Demander un RDV
+<i class="ri-phone-line ml-3"></i>
+</span>
+</button>
+</div>
+</div>
+<div class="grid lg:grid-cols-2 gap-12 mb-20">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/30">
+<div class="flex items-center mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-primary to-blue-600 rounded-2xl mr-6 shadow-lg">
+<i class="ri-calendar-check-line ri-2x text-white"></i>
+</div>
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Réservation Visite Guidée</h3>
+<p class="text-gray-600">Planifiez votre découverte du port avec nos experts</p>
+</div>
+</div>
+<form id="visitForm" class="space-y-6">
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Vérification préférée *</label>
+<input type="text" name="prenom" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Nom *</label>
+<input type="text" name="nom" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Email *</label>
+<input type="email" name="email" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Téléphone</label>
+<input type="tel" name="telephone" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Date de visite *</label>
+<input type="date" name="date" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Heure préférée *</label>
+<select name="heure" required class="w-full px-5 py-4 pr-10 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white/70 text-sm">
+<option value="">Sélectionnez une heure</option>
+<option value="09:00">09:00 - Matinée</option>
+<option value="11:00">11:00 - Fin de matinée</option>
+<option value="14:00">14:00 - Après-midi</option>
+<option value="16:00">16:00 - Fin d'après-midi</option>
+</select>
+</div>
+</div>
+<div class="grid md:grid-cols-2 gap-6">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Nombre de participants *</label>
+<input type="number" name="participants" min="1" max="25" value="1" required class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Type de visite</label>
+<select name="type_visite" class="w-full px-5 py-4 pr-10 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white/70 text-sm">
+<option value="classique">Visite Classique</option>
+<option value="technique">Focus Technique</option>
+<option value="educative">Visite Éducative</option>
+<option value="corporate">Visite Corporate</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Intérêts particuliers</label>
+<div class="grid grid-cols-2 gap-4">
+<label class="flex items-center">
+<input type="checkbox" name="interets" value="conteneurs" class="custom-checkbox">
+<span class="ml-3 text-sm text-gray-700">Terminal conteneurs</span>
+</label>
+<label class="flex items-center">
+<input type="checkbox" name="interets" value="vrac" class="custom-checkbox">
+<span class="ml-3 text-sm text-gray-700">Vrac et hydrocarbures</span>
+</label>
+<label class="flex items-center">
+<input type="checkbox" name="interets" value="pilotage" class="custom-checkbox">
+<span class="ml-3 text-sm text-gray-700">Services de pilotage</span>
+</label>
+<label class="flex items-center">
+<input type="checkbox" name="interets" value="logistique" class="custom-checkbox">
+<span class="ml-3 text-sm text-gray-700">Chaîne logistique</span>
+</label>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Organisation / Entreprise</label>
+<input type="text" name="organisation" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Besoins spécifiques</label>
+<textarea name="besoins" rows="4" placeholder="Informations complémentaires, besoins d'accessibilité, objectifs de la visite..." class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/70 resize-none"></textarea>
+</div>
+<div class="flex items-start space-x-3">
+<input type="checkbox" name="conditions" required class="custom-checkbox mt-1">
+<label class="text-sm text-gray-600 leading-relaxed">J'accepte les conditions générales de visite et autorise le traitement de mes données personnelles pour cette réservation</label>
+</div>
+<button type="submit" class="w-full bg-gradient-to-r from-primary to-blue-600 text-white py-5 px-8 !rounded-button whitespace-nowrap text-lg font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 cursor-pointer">
+<span class="flex items-center justify-center">
+Confirmer la Réservation
+<i class="ri-send-plane-line ml-3"></i>
+</span>
+</button>
+</form>
+<div class="mt-8 p-6 bg-green-50/70 rounded-2xl border border-green-200/50">
+<div class="flex items-center text-sm text-green-700">
+<i class="ri-shield-check-line mr-3 text-lg"></i>
+<span>Réservation sécurisée • Confirmation immédiate par email • Modification possible jusqu'à 24h avant</span>
+</div>
+</div>
+</div>
+<div class="space-y-8">
+<div class="bg-gradient-to-br from-secondary/5 to-cyan-50/50 rounded-3xl p-8 border border-secondary/10">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-gradient-to-br from-secondary to-cyan-600 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i class="ri-information-line ri-2x text-white"></i>
+</div>
+<h4 class="text-2xl font-bold text-gray-900 mb-2">Informations Pratiques</h4>
+<p class="text-gray-600">Tout ce qu'il faut savoir pour votre visite</p>
+</div>
+<div class="space-y-4">
+<div class="bg-white/70 rounded-2xl p-4 border border-secondary/20">
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center mt-1">
+<i class="ri-time-line text-secondary text-sm"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900 text-sm">Horaires des visites</div>
+<div class="text-gray-600 text-sm">Lun-Ven: 9h, 11h, 14h, 16h<br>Sam: 9h, 11h uniquement</div>
+</div>
+</div>
+</div>
+<div class="bg-white/70 rounded-2xl p-4 border border-secondary/20">
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center mt-1">
+<i class="ri-map-pin-2-line text-secondary text-sm"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900 text-sm">Point de rendez-vous</div>
+<div class="text-gray-600 text-sm">Centre d'accueil visiteurs<br>Entrée principale, Môle 1</div>
+</div>
+</div>
+</div>
+<div class="bg-white/70 rounded-2xl p-4 border border-secondary/20">
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center mt-1">
+<i class="ri-shield-line text-secondary text-sm"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900 text-sm">Équipements de sécurité</div>
+<div class="text-gray-600 text-sm">Casques et gilets fournis<br>Chaussures fermées obligatoires</div>
+</div>
+</div>
+</div>
+<div class="bg-white/70 rounded-2xl p-4 border border-secondary/20">
+<div class="flex items-start space-x-3">
+<div class="w-6 h-6 bg-secondary/20 rounded-full flex items-center justify-center mt-1">
+<i class="ri-camera-line text-secondary text-sm"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900 text-sm">Photos autorisées</div>
+<div class="text-gray-600 text-sm">Zones publiques uniquement<br>Respect des consignes guide</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="bg-gradient-to-br from-orange-50/80 to-yellow-50/80 rounded-3xl p-8 border border-orange-100/50">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-gradient-to-br from-orange-400 to-yellow-500 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i class="ri-star-line ri-2x text-white"></i>
+</div>
+<h4 class="text-xl font-bold text-gray-900 mb-2">Témoignages Récents</h4>
+</div>
+<div class="space-y-4">
+<div class="bg-white/70 rounded-2xl p-4 border border-orange-200">
+<div class="flex items-center mb-3">
+<img src="https://readdy.ai/api/search-image?query=Professional%20African%20businessman%20headshot%2C%20confident%20business%20portrait%2C%20elegant%20executive%20photo%20with%20modern%20office%20background&width=40&height=40&seq=visitor1&orientation=squarish" alt="Visiteur" class="w-8 h-8 rounded-full object-cover mr-3">
+<div>
+<div class="font-semibold text-gray-900 text-sm">Abdou Ndiaye</div>
+<div class="text-orange-600 text-xs">Directeur Logistique</div>
+</div>
+<div class="ml-auto flex text-yellow-400">
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+</div>
+</div>
+<p class="text-sm text-gray-600">"Visite exceptionnelle ! Les explications techniques étaient parfaites et j'ai pu mieux comprendre la complexité des opérations portuaires."</p>
+</div>
+<div class="bg-white/70 rounded-2xl p-4 border border-orange-200">
+<div class="flex items-center mb-3">
+<img src="https://readdy.ai/api/search-image?query=Professional%20African%20woman%20business%20executive%20portrait%2C%20elegant%20female%20professional%20headshot%2C%20modern%20business%20portrait%20with%20contemporary%20office%20setting&width=40&height=40&seq=visitor2&orientation=squarish" alt="Visiteur" class="w-8 h-8 rounded-full object-cover mr-3">
+<div>
+<div class="font-semibold text-gray-900 text-sm">Mariama Thiam</div>
+<div class="text-orange-600 text-xs">Étudiante Commerce</div>
+</div>
+<div class="ml-auto flex text-yellow-400">
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+<i class="ri-star-fill text-xs"></i>
+</div>
+</div>
+<p class="text-sm text-gray-600">"L'expérience VR est incroyable ! On a vraiment l'impression d'être aux commandes des équipements portuaires."</p>
+</div>
+</div>
+</div>
+<!-- <div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-xl border border-white/30">
+<div class="text-center mb-6">
+<div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-700 rounded-2xl flex items-center justify-center mx-auto mb-4">
+<i class="ri-phone-line ri-2x text-white"></i>
+</div>
+<h4 class="text-xl font-bold text-gray-900 mb-2">Contact Visites</h4>
+<p class="text-gray-600 text-sm">Notre équipe dédiée aux visites</p>
+</div>
+<div class="space-y-4">
+<div class="flex items-center space-x-4 p-4 bg-purple-50/50 rounded-xl">
+<div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+<i class="ri-phone-line text-purple-600"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900 text-sm">Service Visites</div>
+<div class="text-purple-600 font-bold">+221 33 823 92 30</div>
+</div>
+</div>
+<div class="flex items-center space-x-4 p-4 bg-purple-50/50 rounded-xl">
+<div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+<i class="ri-mail-line text-purple-600"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900 text-sm">Email Réservations</div>
+<div class="text-gray-600 text-sm">visites@portdakar.sn</div>
+</div>
+</div>
+<div class="flex items-center space-x-4 p-4 bg-purple-50/50 rounded-xl">
+<div class="w-10 h-10 bg-purple-100 rounded-xl flex items-center justify-center">
+<i class="ri-time-line text-purple-600"></i>
+</div>
+<div>
+<div class="font-semibold text-gray-900 text-sm">Horaires Bureau</div>
+<div class="text-gray-600 text-sm">Lun-Ven 8h-17h, Sam 8h-12h</div>
+</div>
+</div>
+</div>
+</div> -->
+</div>
+</div>
+<div class="bg-gradient-to-r from-slate-100/50 via-blue-50/30 to-slate-100/50 rounded-3xl p-12 border border-slate-200/50">
+<div class="text-center mb-12">
+<h3 class="text-4xl font-bold text-gray-900 mb-6">Visites Spécialisées</h3>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto">Des expériences sur mesure pour différents publics et objectifs</p>
+</div>
+<div class="grid lg:grid-cols-4 gap-8">
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform">
+<i class="ri-graduation-cap-line ri-2x text-white"></i>
+</div>
+<h5 class="font-bold text-gray-900 mb-2">Visites Éducatives</h5>
+<p class="text-gray-600 text-sm mb-4">Pour écoles, universités et centres de formation maritime</p>
+<div class="text-blue-600 font-semibold text-sm">Groupes 15-50 pers.</div>
+</div>
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform">
+<i class="ri-building-line ri-2x text-white"></i>
+</div>
+<h5 class="font-bold text-gray-900 mb-2">Visites Corporate</h5>
+<p class="text-gray-600 text-sm mb-4">Pour entreprises, délégations et partenaires commerciaux</p>
+<div class="text-green-600 font-semibold text-sm">Sur rendez-vous</div>
+</div>
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform">
+<i class="ri-tools-line ri-2x text-white"></i>
+</div>
+<h5 class="font-bold text-gray-900 mb-2">Visites Techniques</h5>
+<p class="text-gray-600 text-sm mb-4">Focus ingénierie et technologies portuaires avancées</p>
+<div class="text-orange-600 font-semibold text-sm">Experts uniquement</div>
+</div>
+<div class="group bg-white/70 backdrop-blur-sm rounded-2xl p-6 border border-white/40 hover:shadow-lg transition-all duration-300 text-center">
+<div class="w-16 h-16 bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-105 transition-transform">
+<i class="ri-camera-line ri-2x text-white"></i>
+</div>
+<h5 class="font-bold text-gray-900 mb-2">Visites Médias</h5>
+<p class="text-gray-600 text-sm mb-4">Pour journalistes, blogueurs et créateurs de contenu</p>
+<div class="text-purple-600 font-semibold text-sm">Accréditation requise</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<footer class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="80" height="80" viewBox="0 0 80 80" xmlns="http://www.w3.org/2000/svg"%3E%3Cg fill="none" fill-rule="evenodd"%3E%3Cg fill="%23475569" fill-opacity="0.1"%3E%3Cpath d="M40 40c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8zm-24-24c0-4.4 3.6-8 8-8s8 3.6 8 8-3.6 8-8 8-8-3.6-8-8z"/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-30"></div>
+<div class="absolute top-0 right-0 w-96 h-96 bg-gradient-to-bl from-primary/10 to-transparent rounded-full blur-3xl"></div>
+<div class="absolute bottom-0 left-0 w-80 h-80 bg-gradient-to-tr from-secondary/10 to-transparent rounded-full blur-3xl"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="py-20">
+<div class="grid lg:grid-cols-12 gap-12 mb-16">
+<div class="lg:col-span-5">
+<div class="flex items-center mb-8">
+<div class="font-['Pacifico'] text-3xl text-white font-bold"><img src="logo.png" style="width: 200px; background-color: white; padding: 5px; border-radius: 5px;" alt=""></div>
+
+</div>
+<p class="text-gray-300 text-lg leading-relaxed mb-8">
+Porte d'entrée maritime de l'Afrique de l'Ouest depuis 1865, nous connectons les continents avec excellence, innovation et durabilité pour un avenir maritime prospère.
+</p>
+<div class="flex space-x-6">
+<div class="w-14 h-14 bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-facebook-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-sky-400 to-sky-500 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-twitter-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-blue-600 to-blue-700 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-linkedin-fill text-white text-2xl"></i>
+</div>
+<div class="w-14 h-14 bg-gradient-to-br from-red-500 to-red-600 rounded-2xl flex items-center justify-center cursor-pointer hover:scale-110 transform transition-all duration-300 shadow-lg">
+<i class="ri-youtube-fill text-white text-2xl"></i>
+</div>
+</div>
+</div>
+<div class="lg:col-span-7 grid md:grid-cols-3 gap-8">
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Navigation</h4>
+<div class="space-y-4">
+<a href="#accueil" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Accueil</a>
+<a href="#apropos" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">À Propos</a>
+<a href="#services" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Services</a>
+<a href="#trafics" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Trafics</a>
+<a href="#actualites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Actualités</a>
+<a href="#visites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Visites</a>
+<a href="#contact" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Services</h4>
+<div class="space-y-4">
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Manutention Portuaire</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Entreposage Sécurisé</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Pilotage Maritime</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Formalités Douanières</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Avitaillement</a>
+<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Support Premium</a>
+</div>
+</div>
+<div>
+<h4 class="text-xl font-bold mb-6 text-white">Contact</h4>
+<div class="space-y-4">
+<div class="flex items-start space-x-3">
+<i class="ri-map-pin-line text-primary text-lg mt-1"></i>
+<div class="text-gray-300 text-sm">
+Boulevard de la République<br>
+BP 3257 Dakar, Sénégal
+</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-phone-line text-primary text-lg"></i>
+<div class="text-gray-300">+221 33 823 92 00</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-mail-line text-primary text-lg"></i>
+<div class="text-gray-300">info@portdakar.sn</div>
+</div>
+<div class="flex items-center space-x-3">
+<i class="ri-time-line text-primary text-lg"></i>
+<div class="text-gray-300 text-sm">24h/24 - 7j/7</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="border-t border-gray-700 pt-8">
+<div class="grid md:grid-cols-2 gap-8 items-center">
+<div class="flex flex-wrap items-center space-x-6">
+<div class="text-gray-400 text-sm">Certifié ISO 9001:2015</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">ISPS Code Compliant</div>
+<div class="w-1 h-1 bg-gray-600 rounded-full"></div>
+<div class="text-gray-400 text-sm">Green Port Certified</div>
+</div>
+<div class="flex flex-wrap items-center justify-end space-x-6">
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Mentions Légales</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Politique de Confidentialité</a>
+<a href="#" class="text-gray-400 hover:text-white transition-colors text-sm cursor-pointer">Cookies</a>
+</div>
+</div>
+<div class="text-center mt-8 pt-8 border-t border-gray-700">
+<p class="text-gray-400 text-sm">
+© 2025 Port Autonome de Dakar. Tous droits réservés. | Développé avec ❤️ pour l'excellence maritime africaine.
+</p>
+</div>
+</div>
+</div>
+</div>
+</footer>
+<script>
+// Mobile menu toggle
+document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+const nav = document.querySelector('nav');
+nav.classList.toggle('hidden');
+});
+// Initialize charts
+document.addEventListener('DOMContentLoaded', function() {
+// Traffic Chart
+const trafficChart = echarts.init(document.getElementById('trafficChart'));
+const trafficOption = {
+tooltip: { trigger: 'axis' },
+legend: { data: ['Conteneurs (EVP)', 'Vrac (Tonnes)', 'Roulier (Unités)'] },
+grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+xAxis: { type: 'category', data: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'] },
+yAxis: { type: 'value' },
+series: [
+{ name: 'Conteneurs (EVP)', type: 'line', data: [8200, 8900, 9400, 9800, 10200, 11000, 11500, 12000, 12200, 12800, 13000, 13400], smooth: true, lineStyle: { color: '#3b82f6' }, itemStyle: { color: '#3b82f6' } },
+{ name: 'Vrac (Tonnes)', type: 'line', data: [45000, 48000, 52000, 50000, 54000, 58000, 60000, 62000, 59000, 61000, 63000, 65000], smooth: true, lineStyle: { color: '#10b981' }, itemStyle: { color: '#10b981' } },
+{ name: 'Roulier (Unités)', type: 'line', data: [1200, 1350, 1400, 1450, 1500, 1600, 1650, 1700, 1750, 1800, 1850, 1900], smooth: true, lineStyle: { color: '#f59e0b' }, itemStyle: { color: '#f59e0b' } }
+]
+};
+trafficChart.setOption(trafficOption);
+// Cargo Chart
+const cargoChart = echarts.init(document.getElementById('cargoChart'));
+const cargoOption = {
+tooltip: { trigger: 'item', formatter: '{a} <br/>{b}: {c} ({d}%)' },
+series: [{
+name: 'Types de marchandises',
+type: 'pie',
+radius: '70%',
+data: [
+{ value: 35, name: 'Conteneurs', itemStyle: { color: '#3b82f6' } },
+{ value: 25, name: 'Vrac solide', itemStyle: { color: '#10b981' } },
+{ value: 20, name: 'Hydrocarbures', itemStyle: { color: '#f59e0b' } },
+{ value: 12, name: 'Roulier', itemStyle: { color: '#8b5cf6' } },
+{ value: 8, name: 'Autres', itemStyle: { color: '#ef4444' } }
+],
+emphasis: { itemStyle: { shadowBlur: 10, shadowOffsetX: 0, shadowColor: 'rgba(0, 0, 0, 0.2)' } }
+}]
+};
+cargoChart.setOption(cargoOption);
+// Comparison Chart
+const comparisonChart = echarts.init(document.getElementById('comparisonChart'));
+const comparisonOption = {
+tooltip: { trigger: 'axis' },
+legend: { data: ['2023', '2024'] },
+grid: { left: '3%', right: '4%', bottom: '3%', containLabel: true },
+xAxis: { type: 'category', data: ['Jan', 'Fév', 'Mar', 'Avr', 'Mai', 'Jun', 'Jul', 'Aoû', 'Sep', 'Oct', 'Nov', 'Déc'] },
+yAxis: { type: 'value' },
+series: [
+{ name: '2023', type: 'bar', data: [7800, 8200, 8600, 8900, 9200, 9800, 10200, 10500, 10800, 11000, 11200, 11500], itemStyle: { color: '#94a3b8' } },
+{ name: '2024', type: 'bar', data: [8200, 8900, 9400, 9800, 10200, 11000, 11500, 12000, 12200, 12800, 13000, 13400], itemStyle: { color: '#3b82f6' } }
+]
+};
+comparisonChart.setOption(comparisonOption);
+// Resize charts on window resize
+window.addEventListener('resize', function() {
+trafficChart.resize();
+cargoChart.resize();
+comparisonChart.resize();
+});
+});
+// Smooth scrolling for navigation links
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+anchor.addEventListener('click', function (e) {
+e.preventDefault();
+const target = document.querySelector(this.getAttribute('href'));
+if (target) {
+target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+});
+});
+</script>
+
+</body>
+</html>
