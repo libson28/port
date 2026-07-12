@@ -97,7 +97,7 @@ border-radius: 50%;
 <div><img style="width: 180px;" src="logo.png" alt=""></div>
 </div>
 <nav class="hidden md:flex items-center space-x-8">
-<a href="#accueil" class="text-gray-900 hover:text-primary transition-colors">Accueil</a>
+<a href="index.html" class="text-secondary hover:text-primary transition-colors">Accueil</a>
 <a href="about.html" class="text-gray-700 hover:text-primary transition-colors">À Propos</a>
 <a href="actu.html" class="text-gray-700 hover:text-primary transition-colors">Actualités</a>
 <a href="trafic.html" class="text-gray-700 hover:text-primary transition-colors">Trafics</a>
@@ -105,9 +105,7 @@ border-radius: 50%;
 <a href="visite.html" class="text-gray-700 hover:text-primary transition-colors">Visites</a>
 <a href="contact.html" class="text-gray-700 hover:text-primary transition-colors">Contact</a>
 </nav>
-<button class="bg-secondary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-700 transition-colors">
-Réserver une Visite
-</button>
+<a href="visite.html" class="bg-secondary text-white px-6 py-2 !rounded-button whitespace-nowrap hover:bg-blue-700 transition-colors">Réserver une Visite</a>
 <div class="md:hidden">
 <button id="mobile-menu-btn" class="w-8 h-8 flex items-center justify-center text-gray-700">
 <i class="ri-menu-line ri-lg"></i>
@@ -141,10 +139,10 @@ Réserver une Visite
 
             <!-- CTA Buttons -->
             <div class="flex flex-wrap gap-4 justify-center mb-16">
-                <button class="bg-secondary hover:bg-blue-700 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+                <button class="bg-secondary hover:bg-blue-700 text-white px-6 py-3 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
                     Nos services
                 </button>
-                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-8 py-4 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
+                <button class="bg-transparent border-2 border-white text-white hover:bg-white hover:text-gray-900 px-6 py-3 rounded-lg text-lg font-semibold transition-all transform hover:scale-105 shadow-lg">
                     Réserver un ticket
                 </button>
             </div>
@@ -160,184 +158,7 @@ Réserver une Visite
         </div>
     </div>
 
-<section id="visites" class="py-20 bg-gradient-to-br from-blue-50 via-white to-sky-50 relative overflow-hidden">
-<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e0f2fe' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
-<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
-<div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
-<i class="ri-map-pin-line mr-2"></i>
-Expérience Immersive
-</div>
-<h2 class="text-5xl font-bold text-gray-900 mb-6">Découvrez Notre Port</h2>
-<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Plongez au cœur des opérations portuaires les plus avancées d'Afrique de l'Ouest à travers nos visites exclusives</p>
-</div>
-<div class="grid lg:grid-cols-2 gap-12 items-center">
-<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-<div class="flex items-center mb-8">
-<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-primary to-blue-600 rounded-2xl mr-6 shadow-lg">
-<i class="ri-calendar-check-line ri-2x text-white"></i>
-</div>
-<div>
-<h3 class="text-3xl font-bold text-gray-900 mb-2">Visite Guidée</h3>
-<p class="text-gray-600">Expérience immersive avec nos experts</p>
-</div>
-</div>
-<form class="space-y-6">
-<div class="grid md:grid-cols-2 gap-4">
-<div>
-<label class="block text-sm font-semibold text-gray-800 mb-3">Date de visite</label>
-<input type="date" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/50">
-</div>
-<div>
-<label class="block text-sm font-semibold text-gray-800 mb-3">Heure préférée</label>
-<select class="w-full px-5 py-4 pr-10 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white/50 text-sm">
-<option>09:00 - Matinée</option>
-<option>11:00 - Fin de matinée</option>
-<option>14:00 - Après-midi</option>
-<option>16:00 - Fin d'après-midi</option>
-</select>
-</div>
-</div>
-<div>
-<label class="block text-sm font-semibold text-gray-800 mb-3">Nombre de participants</label>
-<input type="number" min="1" max="20" value="1" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/50">
-</div>
-<button type="submit" class="w-full bg-gradient-to-r from-primary to-blue-600 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
-<span class="flex items-center justify-center">
-Réserver Maintenant
-<i class="ri-calendar-event-line ml-3"></i>
-</span>
-</button>
-</form>
-<div class="mt-6 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
-<div class="flex items-center text-sm text-blue-700">
-<i class="ri-information-line mr-2"></i>
-<span>Visite gratuite • Durée 2h • Guide expert inclus</span>
-</div>
-</div>
-</div>
-<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
-<div class="flex items-center mb-8">
-<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-secondary to-cyan-500 rounded-2xl mr-6 shadow-lg">
-<i class="ri-vr-box-line ri-2x text-white"></i>
-</div>
-<div>
-<h3 class="text-3xl font-bold text-gray-900 mb-2">Visite Virtuelle</h3>
-<p class="text-gray-600">Exploration 360° depuis chez vous</p>
-</div>
-</div>
-<div class="relative mb-8 group cursor-pointer">
-<div class="bg-gradient-to-br from-secondary/20 via-primary/10 to-cyan-100/30 rounded-2xl p-8 h-48 flex items-center justify-center overflow-hidden">
-<img src="https://readdy.ai/api/search-image?query=Virtual%20reality%20360%20degree%20port%20tour%20preview%2C%20immersive%20digital%20experience%20interface%2C%20modern%20VR%20technology%20visualization%2C%20interactive%20port%20exploration%20preview%2C%20futuristic%20digital%20maritime%20tour%2C%20clean%20technology%20interface%20design%2C%20professional%20VR%20experience&width=400&height=200&seq=vr1&orientation=landscape" alt="Aperçu VR" class="w-full h-full object-cover object-top rounded-xl opacity-80 group-hover:opacity-100 transition-opacity">
-<div class="absolute inset-0 flex items-center justify-center">
-<div class="w-20 h-20 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-2xl group-hover:scale-105 transition-transform">
-<i class="ri-play-fill ri-2x text-secondary"></i>
-</div>
-</div>
-</div>
-<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700">
-360° VR
-</div>
-</div>
-<button class="w-full bg-gradient-to-r from-secondary to-cyan-500 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg mb-6">
-<span class="flex items-center justify-center">
-Démarrer l'Expérience VR
-<i class="ri-external-link-line ml-3"></i>
-</span>
-</button>
-<div class="grid grid-cols-2 gap-4 text-center">
-<div class="p-4 bg-gray-50/50 rounded-xl">
-<div class="text-2xl font-bold text-secondary mb-1">15-20</div>
-<div class="text-xs text-gray-600 uppercase tracking-wider">Minutes</div>
-</div>
-<div class="p-4 bg-gray-50/50 rounded-xl">
-<div class="text-2xl font-bold text-secondary mb-1">24/7</div>
-<div class="text-xs text-gray-600 uppercase tracking-wider">Disponible</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section id="trafics" class="py-20 bg-gradient-to-b from-white to-gray-50 relative">
-<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866-3.866 10.134-3.866 14 0s3.866 10.134 0 14-10.134 3.866-14 0-3.866-10.134 0-14z" fill="%23f1f5f9" fill-opacity="0.4"/%3E%3C/svg%3E')] opacity-30"></div>
-<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-<div class="text-center mb-16">
-<div class="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
-<div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
-Données en Temps Réel
-</div>
-<h2 class="text-5xl font-bold text-gray-900 mb-6">Activité Portuaire</h2>
-<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Suivez en direct les performances et statistiques de notre port grâce à notre système de monitoring avancé</p>
-</div>
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
-<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-blue-100/50 hover:border-blue-200 transform hover:-translate-y-2">
-<div class="flex items-center justify-between mb-6">
-<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
-<i class="ri-ship-line ri-2x"></i>
-</div>
-<div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
-</div>
-<div class="text-4xl font-bold text-blue-600 mb-3 font-mono">47</div>
-<div class="text-gray-700 font-medium mb-2">Navires en Escale</div>
-<div class="text-sm text-gray-500">+3 depuis hier</div>
-</div>
-<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-green-100/50 hover:border-green-200 transform hover:-translate-y-2">
-<div class="flex items-center justify-between mb-6">
-<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
-<i class="ri-box-3-line ri-2x"></i>
-</div>
-<div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
-</div>
-<div class="text-4xl font-bold text-green-600 mb-3 font-mono">12,458</div>
-<div class="text-gray-700 font-medium mb-2">Conteneurs Traités</div>
-<div class="text-sm text-gray-500">+156 aujourd'hui</div>
-</div>
-<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-orange-100/50 hover:border-orange-200 transform hover:-translate-y-2">
-<div class="flex items-center justify-between mb-6">
-<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
-<i class="ri-scales-3-line ri-2x"></i>
-</div>
-<div class="w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
-</div>
-<div class="text-4xl font-bold text-orange-600 mb-3 font-mono">2.4M</div>
-<div class="text-gray-700 font-medium mb-2">Tonnes Mensuelles</div>
-<div class="text-sm text-gray-500">78% de l'objectif</div>
-</div>
-<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-100/50 hover:border-purple-200 transform hover:-translate-y-2">
-<div class="flex items-center justify-between mb-6">
-<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
-<i class="ri-dashboard-3-line ri-2x"></i>
-</div>
-<div class="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
-</div>
-<div class="text-4xl font-bold text-purple-600 mb-3 font-mono">89%</div>
-<div class="text-gray-700 font-medium mb-2">Taux d'Occupation</div>
-<div class="text-sm text-gray-500">Capacité optimale</div>
-</div>
-</div>
-<div class="grid lg:grid-cols-2 gap-10">
-<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-<div class="flex items-center justify-between mb-8">
-<h3 class="text-2xl font-bold text-gray-900">Évolution du Trafic</h3>
-<div class="flex items-center space-x-2">
-<div class="w-3 h-3 bg-blue-500 rounded-full"></div>
-<span class="text-sm text-gray-600">Tonnes traitées</span>
-</div>
-</div>
-<div id="trafficChart" class="h-80"></div>
-</div>
-<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
-<div class="flex items-center justify-between mb-8">
-<h3 class="text-2xl font-bold text-gray-900">Types de Marchandises</h3>
-<div class="text-sm text-gray-600">Répartition mensuelle</div>
-</div>
-<div id="cargoChart" class="h-80"></div>
-</div>
-</div>
-</div>
-</section>
-<section id="apropos" class="py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white relative overflow-hidden">
+    <section id="apropos" class="py-20 bg-gradient-to-br from-slate-50 via-blue-50/30 to-white relative overflow-hidden">
 <div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="120" height="120" viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M9 0h2v20H9V0zm25.134 56.134L41 49.267V20H20v29.267l6.866 6.867v42.133L20 105.133V135h21v-29.867l-6.866-6.866V56.134zm0-42.133L27.267 7.134 20 0v20h21V0l-6.866 14.001z" fill="%23e2e8f0" fill-opacity="0.2"/%3E%3C/svg%3E')] opacity-40"></div>
 <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="grid lg:grid-cols-2 gap-16 items-center">
@@ -446,6 +267,188 @@ Notre mission transcende le simple transit de marchandises : nous sommes les arc
 </div>
 </div>
 </section>
+
+
+
+<section id="trafics" class="py-20 bg-gradient-to-b from-white to-gray-50 relative">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width="100" height="100" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"%3E%3Cpath d="M11 18c3.866-3.866 10.134-3.866 14 0s3.866 10.134 0 14-10.134 3.866-14 0-3.866-10.134 0-14z" fill="%23f1f5f9" fill-opacity="0.4"/%3E%3C/svg%3E')] opacity-30"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-green-100 text-green-700 text-sm font-medium mb-6">
+<div class="w-2 h-2 bg-green-500 rounded-full mr-2 animate-pulse"></div>
+Données en Temps Réel
+</div>
+<h2 class="text-5xl font-bold text-gray-900 mb-6">Activité Portuaire</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Suivez en direct les performances et statistiques de notre port grâce à notre système de monitoring avancé</p>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-blue-100/50 hover:border-blue-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-ship-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-blue-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-blue-600 mb-3 font-mono">47</div>
+<div class="text-gray-700 font-medium mb-2">Navires en Escale</div>
+<div class="text-sm text-gray-500">+3 depuis hier</div>
+</div>
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-green-100/50 hover:border-green-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-green-500 to-green-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-box-3-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-green-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-green-600 mb-3 font-mono">12,458</div>
+<div class="text-gray-700 font-medium mb-2">Conteneurs Traités</div>
+<div class="text-sm text-gray-500">+156 aujourd'hui</div>
+</div>
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-orange-100/50 hover:border-orange-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-orange-500 to-orange-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-scales-3-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-orange-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-orange-600 mb-3 font-mono">2.4M</div>
+<div class="text-gray-700 font-medium mb-2">Tonnes Mensuelles</div>
+<div class="text-sm text-gray-500">78% de l'objectif</div>
+</div>
+<div class="group bg-white rounded-3xl p-8 shadow-lg hover:shadow-2xl transition-all duration-500 border border-purple-100/50 hover:border-purple-200 transform hover:-translate-y-2">
+<div class="flex items-center justify-between mb-6">
+<div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-2xl group-hover:scale-105 transition-transform shadow-lg">
+<i class="ri-dashboard-3-line ri-2x"></i>
+</div>
+<div class="w-3 h-3 bg-purple-500 rounded-full animate-pulse"></div>
+</div>
+<div class="text-4xl font-bold text-purple-600 mb-3 font-mono">89%</div>
+<div class="text-gray-700 font-medium mb-2">Taux d'Occupation</div>
+<div class="text-sm text-gray-500">Capacité optimale</div>
+</div>
+</div>
+<div class="grid lg:grid-cols-2 gap-10">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-gray-900">Évolution du Trafic</h3>
+<div class="flex items-center space-x-2">
+<div class="w-3 h-3 bg-blue-500 rounded-full"></div>
+<span class="text-sm text-gray-600">Tonnes traitées</span>
+</div>
+</div>
+<div id="trafficChart" class="h-80"></div>
+</div>
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-8 shadow-2xl border border-white/20">
+<div class="flex items-center justify-between mb-8">
+<h3 class="text-2xl font-bold text-gray-900">Types de Marchandises</h3>
+<div class="text-sm text-gray-600">Répartition mensuelle</div>
+</div>
+<div id="cargoChart" class="h-80"></div>
+</div>
+</div>
+</div>
+</section>
+
+    <section id="visites" class="py-20 bg-gradient-to-br from-blue-50 via-white to-sky-50 relative overflow-hidden">
+<div class="absolute inset-0 bg-[url('data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23e0f2fe' fill-opacity='0.3'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')] opacity-50"></div>
+<div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="text-center mb-16">
+<div class="inline-flex items-center px-4 py-2 rounded-full bg-primary/10 text-primary text-sm font-medium mb-6">
+<i class="ri-map-pin-line mr-2"></i>
+Expérience Immersive
+</div>
+<h2 class="text-5xl font-bold text-gray-900 mb-6">Découvrez Notre Port</h2>
+<p class="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">Plongez au cœur des opérations portuaires les plus avancées d'Afrique de l'Ouest à travers nos visites exclusives</p>
+</div>
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+<div class="flex items-center mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-primary to-blue-600 rounded-2xl mr-6 shadow-lg">
+<i class="ri-calendar-check-line ri-2x text-white"></i>
+</div>
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Visite Guidée</h3>
+<p class="text-gray-600">Expérience immersive avec nos experts</p>
+</div>
+</div>
+<form class="space-y-6">
+<div class="grid md:grid-cols-2 gap-4">
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Date de visite</label>
+<input type="date" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/50">
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Heure préférée</label>
+<select class="w-full px-5 py-4 pr-10 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary appearance-none bg-white/50 text-sm">
+<option>09:00 - Matinée</option>
+<option>11:00 - Fin de matinée</option>
+<option>14:00 - Après-midi</option>
+<option>16:00 - Fin d'après-midi</option>
+</select>
+</div>
+</div>
+<div>
+<label class="block text-sm font-semibold text-gray-800 mb-3">Nombre de participants</label>
+<input type="number" min="1" max="20" value="1" class="w-full px-5 py-4 border-2 border-gray-200 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm bg-white/50">
+</div>
+<button type="submit" class="w-full bg-gradient-to-r from-primary to-blue-600 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg">
+<span class="flex items-center justify-center">
+Réserver Maintenant
+<i class="ri-calendar-event-line ml-3"></i>
+</span>
+</button>
+</form>
+<div class="mt-6 p-4 bg-blue-50/50 rounded-xl border border-blue-100">
+<div class="flex items-center text-sm text-blue-700">
+<i class="ri-information-line mr-2"></i>
+<span>Visite gratuite • Durée 2h • Guide expert inclus</span>
+</div>
+</div>
+</div>
+<div class="bg-white/80 backdrop-blur-sm rounded-3xl p-10 shadow-2xl border border-white/20 hover:shadow-3xl transition-all duration-500 transform hover:-translate-y-2">
+<div class="flex items-center mb-8">
+<div class="w-20 h-20 flex items-center justify-center bg-gradient-to-br from-secondary to-cyan-500 rounded-2xl mr-6 shadow-lg">
+<i class="ri-vr-box-line ri-2x text-white"></i>
+</div>
+<div>
+<h3 class="text-3xl font-bold text-gray-900 mb-2">Visite Virtuelle</h3>
+<p class="text-gray-600">Exploration 360° depuis chez vous</p>
+</div>
+</div>
+<div class="relative mb-8 group cursor-pointer">
+<div class="bg-gradient-to-br from-secondary/20 via-primary/10 to-cyan-100/30 rounded-2xl p-8 h-48 flex items-center justify-center overflow-hidden">
+<img src="https://readdy.ai/api/search-image?query=Virtual%20reality%20360%20degree%20port%20tour%20preview%2C%20immersive%20digital%20experience%20interface%2C%20modern%20VR%20technology%20visualization%2C%20interactive%20port%20exploration%20preview%2C%20futuristic%20digital%20maritime%20tour%2C%20clean%20technology%20interface%20design%2C%20professional%20VR%20experience&width=400&height=200&seq=vr1&orientation=landscape" alt="Aperçu VR" class="w-full h-full object-cover object-top rounded-xl opacity-80 group-hover:opacity-100 transition-opacity">
+<div class="absolute inset-0 flex items-center justify-center">
+<div class="w-20 h-20 flex items-center justify-center bg-white/90 backdrop-blur-sm rounded-full shadow-2xl group-hover:scale-105 transition-transform">
+<i class="ri-play-fill ri-2x text-secondary"></i>
+</div>
+</div>
+</div>
+<div class="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full text-xs font-medium text-gray-700">
+360° VR
+</div>
+</div>
+<button class="w-full bg-gradient-to-r from-secondary to-cyan-500 text-white py-4 px-8 !rounded-button whitespace-nowrap font-semibold hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300 text-lg mb-6">
+<span class="flex items-center justify-center">
+Démarrer l'Expérience VR
+<i class="ri-external-link-line ml-3"></i>
+</span>
+</button>
+<div class="grid grid-cols-2 gap-4 text-center">
+<div class="p-4 bg-gray-50/50 rounded-xl">
+<div class="text-2xl font-bold text-secondary mb-1">15-20</div>
+<div class="text-xs text-gray-600 uppercase tracking-wider">Minutes</div>
+</div>
+<div class="p-4 bg-gray-50/50 rounded-xl">
+<div class="text-2xl font-bold text-secondary mb-1">24/7</div>
+<div class="text-xs text-gray-600 uppercase tracking-wider">Disponible</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+
 <section id="actualites" class="py-16 bg-white">
 <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 <div class="text-center mb-12">
@@ -604,24 +607,24 @@ Porte d'entrée maritime de l'Afrique de l'Ouest depuis 1865, nous connectons le
 <div>
 <h4 class="text-xl font-bold mb-6 text-white">Navigation</h4>
 <div class="space-y-4">
-<a href="#accueil" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Accueil</a>
-<a href="#apropos" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">À Propos</a>
-<a href="#services" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Services</a>
-<a href="#trafics" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Trafics</a>
-<a href="#actualites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Actualités</a>
-<a href="#visites" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Visites</a>
-<a href="#contact" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</a>
+<a href="index.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Accueil</a>
+<a href="about.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">À Propos</a>
+<a href="services.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Services</a>
+<a href="trafic.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Trafics</a>
+<a href="actu.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Actualités</a>
+<a href="visite.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Visites</a>
+<a href="contact.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Contact</a>
 </div>
 </div>
 <div>
 <h4 class="text-xl font-bold mb-6 text-white">Services</h4>
 <div class="space-y-4">
-<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Manutention Portuaire</a>
-<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Entreposage Sécurisé</a>
-<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Pilotage Maritime</a>
-<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Formalités Douanières</a>
-<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Avitaillement</a>
-<a href="#" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Support Premium</a>
+<a href="services.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Manutention Portuaire</a>
+<a href="services.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Entreposage Sécurisé</a>
+<a href="services.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Pilotage Maritime</a>
+<a href="services.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Formalités Douanières</a>
+<a href="services.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Avitaillement</a>
+<a href="services.html" class="block text-gray-300 hover:text-white transition-colors cursor-pointer">Support Premium</a>
 </div>
 </div>
 <div>
